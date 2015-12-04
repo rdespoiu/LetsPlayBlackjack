@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import War_CardGame
+@testable import Blackjack
 
-class War_CardGameTests: XCTestCase {
+class Blackjack: XCTestCase {
     
     override func setUp() {
         super.setUp()
