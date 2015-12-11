@@ -907,6 +907,9 @@
                                     <rect key="frame" x="135" y="315" width="510" height="435"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" axis="horizontal"/>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="135" y="315" width="186" height="200"/>
+                                </variation>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbU-25-DLJ" userLabel="PlayerScore">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -1440,7 +1443,7 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
-                                <exclude reference="had-Hd-KBj"/>
+                                <include reference="had-Hd-KBj"/>
                                 <exclude reference="Hy5-eN-uH4"/>
                                 <include reference="Ksu-Ru-SiD"/>
                             </mask>

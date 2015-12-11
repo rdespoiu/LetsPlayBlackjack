@@ -5,6 +5,8 @@ import AVFoundation
 
 class GameController: UIViewController {
     
+    var testForPush: String?
+    
     var timer: NSTimer?
     var newTimer: NSTimer?
     var pressDuration = 0
