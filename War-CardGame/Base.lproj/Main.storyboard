@@ -21,12 +21,293 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="r5L-YV-J5a">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="testbackground4" translatesAutoresizingMaskIntoConstraints="NO" id="r5L-YV-J5a" userLabel="background">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy5-eN-uH4" userLabel="playButtonBar">
+                                <rect key="frame" x="0.0" y="53" width="600" height="52"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testbar" translatesAutoresizingMaskIntoConstraints="NO" id="GCc-kh-oC5" userLabel="barBackground">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vb9-Vk-i95" userLabel="playButtons">
+                                        <rect key="frame" x="36" y="-8" width="328" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="100" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcy-zM-LRh" userLabel="dealButton">
+                                                <rect key="frame" x="20" y="20" width="64" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="187" id="9Li-oR-XTQ"/>
+                                                    <constraint firstAttribute="width" constant="64" id="Q0Z-Ag-6Sf"/>
+                                                    <constraint firstAttribute="height" constant="30" id="YEL-oR-Nbc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
+                                                <state key="normal" title="DEAL">
+                                                    <color key="titleColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="9Li-oR-XTQ"/>
+                                                        <exclude reference="Q0Z-Ag-6Sf"/>
+                                                        <exclude reference="YEL-oR-Nbc"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="Q0Z-Ag-6Sf"/>
+                                                        <include reference="YEL-oR-Nbc"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                                                    <mask key="constraints">
+                                                        <include reference="9Li-oR-XTQ"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="dealButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="3eV-ky-ovM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdX-YE-sDh" userLabel="doubleButton">
+                                                <rect key="frame" x="81" y="20" width="64" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="dlC-g1-fVh"/>
+                                                    <constraint firstAttribute="width" constant="187" id="iLw-xt-xMb"/>
+                                                    <constraint firstAttribute="height" constant="30" id="vl1-Z2-kc1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
+                                                <state key="normal" title="DOUBLE">
+                                                    <color key="titleColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="dlC-g1-fVh"/>
+                                                        <exclude reference="iLw-xt-xMb"/>
+                                                        <exclude reference="vl1-Z2-kc1"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="dlC-g1-fVh"/>
+                                                        <include reference="vl1-Z2-kc1"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                                                    <mask key="constraints">
+                                                        <include reference="iLw-xt-xMb"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="doubleButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="BLM-zL-Efo"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deg-0E-WXR" userLabel="hitButton">
+                                                <rect key="frame" x="135" y="20" width="64" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="3wd-PN-qO2"/>
+                                                    <constraint firstAttribute="width" constant="64" id="gx2-uW-AOk"/>
+                                                    <constraint firstAttribute="width" constant="187" id="kcs-oa-aqR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
+                                                <state key="normal" title="HIT">
+                                                    <color key="titleColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="3wd-PN-qO2"/>
+                                                        <exclude reference="gx2-uW-AOk"/>
+                                                        <exclude reference="kcs-oa-aqR"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="3wd-PN-qO2"/>
+                                                        <include reference="gx2-uW-AOk"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                                                    <mask key="constraints">
+                                                        <include reference="kcs-oa-aqR"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="hitButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="7KS-5m-C6R"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-UW-PUX" userLabel="standButton">
+                                                <rect key="frame" x="186" y="20" width="64" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="4XL-Fe-Tb6"/>
+                                                    <constraint firstAttribute="width" constant="187" id="p51-zU-4uM"/>
+                                                    <constraint firstAttribute="width" constant="64" id="xuI-xP-Par"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
+                                                <state key="normal" title="STAND">
+                                                    <color key="titleColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="4XL-Fe-Tb6"/>
+                                                        <exclude reference="p51-zU-4uM"/>
+                                                        <exclude reference="xuI-xP-Par"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="4XL-Fe-Tb6"/>
+                                                        <include reference="xuI-xP-Par"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                                                    <mask key="constraints">
+                                                        <include reference="p51-zU-4uM"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="standButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="QJE-Df-ezH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbI-AM-sP8" userLabel="clearButton">
+                                                <rect key="frame" x="244" y="20" width="64" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="NcP-nK-Wc3"/>
+                                                    <constraint firstAttribute="width" constant="187" id="S7t-gI-p8x"/>
+                                                    <constraint firstAttribute="height" constant="30" id="naU-fK-Rdj"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
+                                                <state key="normal" title="CLEAR">
+                                                    <color key="titleColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="NcP-nK-Wc3"/>
+                                                        <exclude reference="S7t-gI-p8x"/>
+                                                        <exclude reference="naU-fK-Rdj"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="NcP-nK-Wc3"/>
+                                                        <include reference="naU-fK-Rdj"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                                                    <mask key="constraints">
+                                                        <include reference="S7t-gI-p8x"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="clearButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="Vrl-3k-imJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="800" id="O5T-AP-qDE"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="O5T-AP-qDE"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" spacing="0.0">
+                                            <mask key="constraints">
+                                                <include reference="O5T-AP-qDE"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="vb9-Vk-i95" firstAttribute="centerX" secondItem="Hy5-eN-uH4" secondAttribute="centerX" id="1qA-jB-VIH"/>
+                                    <constraint firstItem="vb9-Vk-i95" firstAttribute="centerX" secondItem="Hy5-eN-uH4" secondAttribute="centerX" id="45n-Ce-7tr"/>
+                                    <constraint firstAttribute="bottom" secondItem="vb9-Vk-i95" secondAttribute="bottom" constant="10" id="4me-LV-Y3d"/>
+                                    <constraint firstAttribute="trailing" secondItem="GCc-kh-oC5" secondAttribute="trailing" id="8Rp-M0-JL6"/>
+                                    <constraint firstItem="GCc-kh-oC5" firstAttribute="top" secondItem="Hy5-eN-uH4" secondAttribute="top" id="Gb3-ec-wno"/>
+                                    <constraint firstItem="GCc-kh-oC5" firstAttribute="leading" secondItem="Hy5-eN-uH4" secondAttribute="leading" id="LLs-X6-9ro"/>
+                                    <constraint firstAttribute="bottom" secondItem="GCc-kh-oC5" secondAttribute="bottom" id="MbV-Wv-g5a"/>
+                                    <constraint firstAttribute="height" constant="80" id="Nwt-8g-ouV"/>
+                                    <constraint firstItem="vb9-Vk-i95" firstAttribute="top" secondItem="Hy5-eN-uH4" secondAttribute="top" constant="9" id="QBr-jk-BW7"/>
+                                    <constraint firstItem="vb9-Vk-i95" firstAttribute="centerY" secondItem="Hy5-eN-uH4" secondAttribute="centerY" id="Vhq-y6-jr3"/>
+                                    <constraint firstAttribute="height" constant="40" id="kJ8-Mw-R8z"/>
+                                    <constraint firstItem="vb9-Vk-i95" firstAttribute="leading" secondItem="Hy5-eN-uH4" secondAttribute="leading" constant="284" id="kyy-nH-s4g"/>
+                                    <constraint firstItem="GCc-kh-oC5" firstAttribute="top" secondItem="Hy5-eN-uH4" secondAttribute="top" id="ld0-JE-LnV"/>
+                                    <constraint firstItem="vb9-Vk-i95" firstAttribute="centerY" secondItem="Hy5-eN-uH4" secondAttribute="centerY" id="mew-cn-frd"/>
+                                    <constraint firstAttribute="bottom" secondItem="GCc-kh-oC5" secondAttribute="bottom" id="o5Y-S7-TvG"/>
+                                    <constraint firstItem="GCc-kh-oC5" firstAttribute="leading" secondItem="Hy5-eN-uH4" secondAttribute="leading" id="oKr-HT-bj8"/>
+                                    <constraint firstAttribute="trailing" secondItem="vb9-Vk-i95" secondAttribute="trailing" constant="283" id="udB-98-6jE"/>
+                                    <constraint firstAttribute="trailing" secondItem="GCc-kh-oC5" secondAttribute="trailing" id="wnF-PB-kBS"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="GCc-kh-oC5"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="Nwt-8g-ouV"/>
+                                        <exclude reference="kJ8-Mw-R8z"/>
+                                        <exclude reference="8Rp-M0-JL6"/>
+                                        <exclude reference="Gb3-ec-wno"/>
+                                        <exclude reference="LLs-X6-9ro"/>
+                                        <exclude reference="MbV-Wv-g5a"/>
+                                        <exclude reference="ld0-JE-LnV"/>
+                                        <exclude reference="o5Y-S7-TvG"/>
+                                        <exclude reference="oKr-HT-bj8"/>
+                                        <exclude reference="wnF-PB-kBS"/>
+                                        <exclude reference="1qA-jB-VIH"/>
+                                        <exclude reference="45n-Ce-7tr"/>
+                                        <exclude reference="4me-LV-Y3d"/>
+                                        <exclude reference="QBr-jk-BW7"/>
+                                        <exclude reference="Vhq-y6-jr3"/>
+                                        <exclude reference="kyy-nH-s4g"/>
+                                        <exclude reference="mew-cn-frd"/>
+                                        <exclude reference="udB-98-6jE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="kJ8-Mw-R8z"/>
+                                        <include reference="1qA-jB-VIH"/>
+                                        <include reference="Vhq-y6-jr3"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="GCc-kh-oC5"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="MbV-Wv-g5a"/>
+                                        <include reference="ld0-JE-LnV"/>
+                                        <include reference="oKr-HT-bj8"/>
+                                        <include reference="wnF-PB-kBS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="GCc-kh-oC5"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="Nwt-8g-ouV"/>
+                                        <include reference="8Rp-M0-JL6"/>
+                                        <include reference="Gb3-ec-wno"/>
+                                        <include reference="LLs-X6-9ro"/>
+                                        <include reference="o5Y-S7-TvG"/>
+                                        <include reference="45n-Ce-7tr"/>
+                                        <exclude reference="4me-LV-Y3d"/>
+                                        <exclude reference="QBr-jk-BW7"/>
+                                        <exclude reference="kyy-nH-s4g"/>
+                                        <include reference="mew-cn-frd"/>
+                                        <exclude reference="udB-98-6jE"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUv-Ik-p3U" userLabel="chipsButtonBar">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testbar" translatesAutoresizingMaskIntoConstraints="NO" id="3Kn-02-Pw4" userLabel="barBackground">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Guy-ok-Tpi" userLabel="moneyStack">
                                         <rect key="frame" x="-3" y="-12" width="406" height="75"/>
                                         <subviews>
@@ -39,7 +320,7 @@
                                                             <constraint firstAttribute="height" constant="14" id="XxY-90-Juw"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="default">
                                                             <mask key="constraints">
@@ -51,6 +332,9 @@
                                                                 <include reference="XxY-90-Juw"/>
                                                             </mask>
                                                         </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                                                        </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bh7-TU-oSi" userLabel="balance">
                                                         <rect key="frame" x="20" y="36" width="79" height="14"/>
@@ -59,7 +343,7 @@
                                                             <constraint firstAttribute="height" constant="14" id="ur1-2Y-oxc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="default">
                                                             <mask key="constraints">
@@ -70,6 +354,9 @@
                                                             <mask key="constraints">
                                                                 <include reference="ur1-2Y-oxc"/>
                                                             </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
@@ -86,6 +373,7 @@
                                                         <include reference="Yo2-mE-daH"/>
                                                     </mask>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" alignment="center" axis="vertical" distribution="fillEqually"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uy6-3g-iCT" userLabel="bettingChips">
                                                 <rect key="frame" x="118" y="20" width="170" height="35"/>
@@ -188,6 +476,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <variation key="heightClass=regular-widthClass=regular" alignment="fill" distribution="fillEqually"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="CPO-K5-XOc" userLabel="bet">
                                                 <rect key="frame" x="307" y="23" width="79" height="31"/>
@@ -198,7 +487,7 @@
                                                             <constraint firstAttribute="height" constant="14" id="207-4w-YVs"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="default">
                                                             <mask key="constraints">
@@ -210,6 +499,9 @@
                                                                 <include reference="207-4w-YVs"/>
                                                             </mask>
                                                         </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                                                        </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wSW-MF-YMi" userLabel="betAmount">
                                                         <rect key="frame" x="20" y="36" width="79" height="14"/>
@@ -217,7 +509,7 @@
                                                             <constraint firstAttribute="height" constant="17" id="KiU-Ed-QIv"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="default">
                                                             <mask key="constraints">
@@ -228,6 +520,9 @@
                                                             <mask key="constraints">
                                                                 <include reference="KiU-Ed-QIv"/>
                                                             </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
@@ -244,21 +539,63 @@
                                                         <include reference="dLK-iM-eOG"/>
                                                     </mask>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" alignment="center" axis="vertical" distribution="fillEqually"/>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="800" id="GcH-H8-dol"/>
+                                            <constraint firstAttribute="height" constant="60" id="wvd-mq-6xO"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="GcH-H8-dol"/>
+                                                <exclude reference="wvd-mq-6xO"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" alignment="center" distribution="fillEqually" spacing="0.0">
+                                            <mask key="constraints">
+                                                <include reference="GcH-H8-dol"/>
+                                                <include reference="wvd-mq-6xO"/>
+                                            </mask>
+                                        </variation>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Guy-ok-Tpi" firstAttribute="centerX" secondItem="rUv-Ik-p3U" secondAttribute="centerX" id="0se-NY-tqg"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Kn-02-Pw4" secondAttribute="trailing" id="2jH-ud-06c"/>
+                                    <constraint firstItem="3Kn-02-Pw4" firstAttribute="top" secondItem="rUv-Ik-p3U" secondAttribute="top" id="4Ei-ry-JD7"/>
                                     <constraint firstAttribute="height" constant="40" id="4H7-3n-H6T"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Kn-02-Pw4" secondAttribute="bottom" id="DB2-7R-pLZ"/>
+                                    <constraint firstItem="Guy-ok-Tpi" firstAttribute="centerX" secondItem="rUv-Ik-p3U" secondAttribute="centerX" id="JC8-hL-cFM"/>
+                                    <constraint firstAttribute="height" constant="80" id="S5I-m2-bQm"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Kn-02-Pw4" secondAttribute="trailing" id="WTV-z5-nUY"/>
+                                    <constraint firstItem="3Kn-02-Pw4" firstAttribute="top" secondItem="rUv-Ik-p3U" secondAttribute="top" id="ioq-iI-ih4"/>
+                                    <constraint firstItem="3Kn-02-Pw4" firstAttribute="leading" secondItem="rUv-Ik-p3U" secondAttribute="leading" id="nkE-Cn-FZ3"/>
                                     <constraint firstItem="Guy-ok-Tpi" firstAttribute="centerY" secondItem="rUv-Ik-p3U" secondAttribute="centerY" id="uFo-vO-CK3"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Kn-02-Pw4" secondAttribute="bottom" id="x0u-UK-RLO"/>
+                                    <constraint firstItem="Guy-ok-Tpi" firstAttribute="centerY" secondItem="rUv-Ik-p3U" secondAttribute="centerY" id="xwE-ld-c0A"/>
+                                    <constraint firstItem="3Kn-02-Pw4" firstAttribute="leading" secondItem="rUv-Ik-p3U" secondAttribute="leading" id="zgA-B3-13L"/>
                                 </constraints>
                                 <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="3Kn-02-Pw4"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <exclude reference="4H7-3n-H6T"/>
+                                        <exclude reference="S5I-m2-bQm"/>
+                                        <exclude reference="2jH-ud-06c"/>
+                                        <exclude reference="4Ei-ry-JD7"/>
+                                        <exclude reference="DB2-7R-pLZ"/>
+                                        <exclude reference="WTV-z5-nUY"/>
+                                        <exclude reference="ioq-iI-ih4"/>
+                                        <exclude reference="nkE-Cn-FZ3"/>
+                                        <exclude reference="x0u-UK-RLO"/>
+                                        <exclude reference="zgA-B3-13L"/>
                                         <exclude reference="0se-NY-tqg"/>
+                                        <exclude reference="JC8-hL-cFM"/>
                                         <exclude reference="uFo-vO-CK3"/>
+                                        <exclude reference="xwE-ld-c0A"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -268,572 +605,54 @@
                                         <include reference="uFo-vO-CK3"/>
                                     </mask>
                                 </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy5-eN-uH4" userLabel="playButtonBar">
-                                <rect key="frame" x="0.0" y="53" width="600" height="52"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vb9-Vk-i95" userLabel="playButtons">
-                                        <rect key="frame" x="36" y="-8" width="328" height="70"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="100" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcy-zM-LRh" userLabel="dealButton">
-                                                <rect key="frame" x="20" y="20" width="64" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="64" id="Q0Z-Ag-6Sf"/>
-                                                    <constraint firstAttribute="height" constant="30" id="YEL-oR-Nbc"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                <state key="normal" title="DEAL"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="Q0Z-Ag-6Sf"/>
-                                                        <exclude reference="YEL-oR-Nbc"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <include reference="Q0Z-Ag-6Sf"/>
-                                                        <include reference="YEL-oR-Nbc"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="dealButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="3eV-ky-ovM"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdX-YE-sDh" userLabel="doubleButton">
-                                                <rect key="frame" x="81" y="20" width="64" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="64" id="dlC-g1-fVh"/>
-                                                    <constraint firstAttribute="height" constant="30" id="vl1-Z2-kc1"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                <state key="normal" title="DOUBLE"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="dlC-g1-fVh"/>
-                                                        <exclude reference="vl1-Z2-kc1"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <include reference="dlC-g1-fVh"/>
-                                                        <include reference="vl1-Z2-kc1"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="doubleButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="BLM-zL-Efo"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deg-0E-WXR" userLabel="hitButton">
-                                                <rect key="frame" x="135" y="20" width="64" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="3wd-PN-qO2"/>
-                                                    <constraint firstAttribute="width" constant="64" id="gx2-uW-AOk"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                <state key="normal" title="HIT"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="3wd-PN-qO2"/>
-                                                        <exclude reference="gx2-uW-AOk"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <include reference="3wd-PN-qO2"/>
-                                                        <include reference="gx2-uW-AOk"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="hitButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="7KS-5m-C6R"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-UW-PUX" userLabel="standButton">
-                                                <rect key="frame" x="186" y="20" width="64" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="4XL-Fe-Tb6"/>
-                                                    <constraint firstAttribute="width" constant="64" id="xuI-xP-Par"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                <state key="normal" title="STAND"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="4XL-Fe-Tb6"/>
-                                                        <exclude reference="xuI-xP-Par"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <include reference="4XL-Fe-Tb6"/>
-                                                        <include reference="xuI-xP-Par"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="standButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="QJE-Df-ezH"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbI-AM-sP8" userLabel="clearButton">
-                                                <rect key="frame" x="244" y="20" width="64" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="64" id="NcP-nK-Wc3"/>
-                                                    <constraint firstAttribute="height" constant="30" id="naU-fK-Rdj"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                                <state key="normal" title="CLEAR"/>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="NcP-nK-Wc3"/>
-                                                        <exclude reference="naU-fK-Rdj"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="widthClass=compact">
-                                                    <mask key="constraints">
-                                                        <include reference="NcP-nK-Wc3"/>
-                                                        <include reference="naU-fK-Rdj"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="clearButtonPressed:" destination="cgw-ED-UiZ" eventType="touchUpInside" id="Vrl-3k-imJ"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="vb9-Vk-i95" firstAttribute="centerX" secondItem="Hy5-eN-uH4" secondAttribute="centerX" id="1qA-jB-VIH"/>
-                                    <constraint firstItem="vb9-Vk-i95" firstAttribute="centerY" secondItem="Hy5-eN-uH4" secondAttribute="centerY" id="Vhq-y6-jr3"/>
-                                    <constraint firstAttribute="height" constant="40" id="kJ8-Mw-R8z"/>
-                                </constraints>
-                                <variation key="default">
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="3Kn-02-Pw4"/>
+                                    </mask>
                                     <mask key="constraints">
-                                        <exclude reference="kJ8-Mw-R8z"/>
-                                        <exclude reference="1qA-jB-VIH"/>
-                                        <exclude reference="Vhq-y6-jr3"/>
+                                        <include reference="WTV-z5-nUY"/>
+                                        <include reference="ioq-iI-ih4"/>
+                                        <include reference="nkE-Cn-FZ3"/>
+                                        <include reference="x0u-UK-RLO"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="3Kn-02-Pw4"/>
+                                    </mask>
                                     <mask key="constraints">
-                                        <include reference="kJ8-Mw-R8z"/>
-                                        <include reference="1qA-jB-VIH"/>
-                                        <include reference="Vhq-y6-jr3"/>
+                                        <include reference="S5I-m2-bQm"/>
+                                        <include reference="2jH-ud-06c"/>
+                                        <include reference="4Ei-ry-JD7"/>
+                                        <include reference="DB2-7R-pLZ"/>
+                                        <include reference="zgA-B3-13L"/>
+                                        <include reference="JC8-hL-cFM"/>
+                                        <include reference="xwE-ld-c0A"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" alignment="center" spacing="-90" translatesAutoresizingMaskIntoConstraints="NO" id="Gh3-bC-NvB" userLabel="dealerCards">
-                                <rect key="frame" x="102" y="32" width="510" height="435"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cardback2" translatesAutoresizingMaskIntoConstraints="NO" id="qM3-NK-IgL" userLabel="dealerCard1" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="435"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="qM3-NK-IgL" secondAttribute="height" multiplier="157:213" id="wxT-CM-AGp"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="wxT-CM-AGp"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="wxT-CM-AGp"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cardback2" translatesAutoresizingMaskIntoConstraints="NO" id="Iba-Ql-cah" userLabel="dealerCard2" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="210" y="0.0" width="300" height="435"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Iba-Ql-cah" secondAttribute="height" multiplier="157:213" id="pRY-LW-1Wl"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="pRY-LW-1Wl"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="pRY-LW-1Wl"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5hF-V5-USb" userLabel="dealerCard3" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="5hF-V5-USb" secondAttribute="height" multiplier="157:213" id="VgG-MW-jwX"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="VgG-MW-jwX"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="VgG-MW-jwX"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OTf-Ib-UPt" userLabel="dealerCard4" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="OTf-Ib-UPt" secondAttribute="height" multiplier="157:213" id="6nK-P9-meZ"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="6nK-P9-meZ"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="6nK-P9-meZ"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wju-22-yhR" userLabel="dealerCard5" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Wju-22-yhR" secondAttribute="height" multiplier="157:213" id="saI-Wx-WQK"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="saI-Wx-WQK"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="saI-Wx-WQK"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8yR-eZ-d0G" userLabel="dealerCard6" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="8yR-eZ-d0G" secondAttribute="height" multiplier="157:213" id="ZUm-LB-g62"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="ZUm-LB-g62"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="ZUm-LB-g62"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LHI-vT-vwz" userLabel="dealerCard7" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="LHI-vT-vwz" secondAttribute="height" multiplier="157:213" id="rPn-VH-kh6"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="rPn-VH-kh6"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="rPn-VH-kh6"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eSg-Yg-YiQ" userLabel="dealerCard8" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="eSg-Yg-YiQ" secondAttribute="height" multiplier="157:213" id="uwd-mU-VjT"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="uwd-mU-VjT"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="uwd-mU-VjT"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pqg-0Z-d39" userLabel="dealerCard9" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Pqg-0Z-d39" secondAttribute="height" multiplier="157:213" id="Vn6-zW-Qai"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Vn6-zW-Qai"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="Vn6-zW-Qai"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jks-bS-mvp" userLabel="dealerCard10" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Jks-bS-mvp" secondAttribute="height" multiplier="157:213" id="faW-du-H4x"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="faW-du-H4x"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="faW-du-H4x"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LhG-BD-HIO" userLabel="dealerCard11" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="LhG-BD-HIO" secondAttribute="height" multiplier="157:213" id="fwU-ie-Wcz"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="fwU-ie-Wcz"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="fwU-ie-Wcz"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-d5-xwg" userLabel="dealerCard12" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="RiF-d5-xwg" secondAttribute="height" multiplier="157:213" id="3rF-gg-hhV"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="3rF-gg-hhV"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="3rF-gg-hhV"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                </subviews>
-                                <variation key="heightClass=regular-widthClass=compact" axis="horizontal" misplaced="YES">
-                                    <rect key="frame" x="63" y="28" width="264" height="240"/>
-                                </variation>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" alignment="center" spacing="-90" translatesAutoresizingMaskIntoConstraints="NO" id="had-Hd-KBj" userLabel="playerCards">
-                                <rect key="frame" x="135" y="315" width="510" height="435"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cardback2" translatesAutoresizingMaskIntoConstraints="NO" id="Gag-O8-DoA" userLabel="playerCard1" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="435"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Gag-O8-DoA" secondAttribute="height" multiplier="157:213" id="eXV-zt-7yy"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="eXV-zt-7yy"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="eXV-zt-7yy"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cardback2" translatesAutoresizingMaskIntoConstraints="NO" id="LVk-gU-eYf" userLabel="playerCard2" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="210" y="0.0" width="300" height="435"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="LVk-gU-eYf" secondAttribute="height" multiplier="157:213" id="9fo-xD-zv4"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="9fo-xD-zv4"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="9fo-xD-zv4"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pJ-t1-qpx" userLabel="playerCard3" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="7pJ-t1-qpx" secondAttribute="height" multiplier="157:213" id="ql9-Gq-zZ9"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="ql9-Gq-zZ9"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="ql9-Gq-zZ9"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSx-c7-qk3" userLabel="playerCard4" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="SSx-c7-qk3" secondAttribute="height" multiplier="157:213" id="Afi-Wt-zCU"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Afi-Wt-zCU"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="Afi-Wt-zCU"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDB-Rb-XKo" userLabel="playerCard5" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="tDB-Rb-XKo" secondAttribute="height" multiplier="157:213" id="Qz8-rQ-IVl"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Qz8-rQ-IVl"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="Qz8-rQ-IVl"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nub-a1-mRk" userLabel="playerCard6" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="nub-a1-mRk" secondAttribute="height" multiplier="157:213" id="LJm-3J-zuq"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="LJm-3J-zuq"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="LJm-3J-zuq"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWc-nH-Hep" userLabel="playerCard7" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="xWc-nH-Hep" secondAttribute="height" multiplier="157:213" id="YTv-pf-iYf"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="YTv-pf-iYf"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="YTv-pf-iYf"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q97-So-ROP" userLabel="playerCard8" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Q97-So-ROP" secondAttribute="height" multiplier="157:213" id="xwr-qb-ljJ"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="xwr-qb-ljJ"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="xwr-qb-ljJ"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6HF-Fb-4T3" userLabel="playerCard9" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="6HF-Fb-4T3" secondAttribute="height" multiplier="157:213" id="5fG-qm-htZ"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="5fG-qm-htZ"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="5fG-qm-htZ"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PlU-rh-f12" userLabel="playerCard10" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="PlU-rh-f12" secondAttribute="height" multiplier="157:213" id="Wb1-bb-YZ1"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Wb1-bb-YZ1"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="Wb1-bb-YZ1"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1L-za-rcd" userLabel="playerCard11" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="m1L-za-rcd" secondAttribute="height" multiplier="157:213" id="Tax-is-xji"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Tax-is-xji"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="Tax-is-xji"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRh-qm-9za" userLabel="playerCard12" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="rRh-qm-9za" secondAttribute="height" multiplier="157:213" id="op4-1A-5ik"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="op4-1A-5ik"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="op4-1A-5ik"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
-                                </subviews>
-                                <variation key="heightClass=regular-widthClass=compact" axis="horizontal" misplaced="YES">
-                                    <rect key="frame" x="63" y="451" width="264" height="240"/>
-                                </variation>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbU-25-DLJ" userLabel="PlayerScore">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testbar" translatesAutoresizingMaskIntoConstraints="NO" id="Rd7-Tk-rd5" userLabel="scoreBackground">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IF2-jO-Aeb" userLabel="playerScore">
                                         <rect key="frame" x="19" y="0.0" width="13" height="14"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="6PJ-MX-FVY"/>
                                             <constraint firstAttribute="width" constant="40" id="7JW-0Y-GH7"/>
+                                            <constraint firstAttribute="height" constant="36" id="fbF-W3-tYK"/>
                                             <constraint firstAttribute="height" constant="18" id="ppV-NX-IHy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="6PJ-MX-FVY"/>
                                                 <exclude reference="7JW-0Y-GH7"/>
+                                                <exclude reference="fbF-W3-tYK"/>
                                                 <exclude reference="ppV-NX-IHy"/>
                                             </mask>
                                         </variation>
@@ -843,24 +662,56 @@
                                                 <include reference="ppV-NX-IHy"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
+                                            <mask key="constraints">
+                                                <include reference="6PJ-MX-FVY"/>
+                                                <include reference="fbF-W3-tYK"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="IF2-jO-Aeb" firstAttribute="centerY" secondItem="sbU-25-DLJ" secondAttribute="centerY" id="0wF-vm-aRu"/>
                                     <constraint firstAttribute="height" constant="18" id="1zv-H8-gGV"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rd7-Tk-rd5" secondAttribute="bottom" id="23z-eB-Cjy"/>
+                                    <constraint firstItem="IF2-jO-Aeb" firstAttribute="centerX" secondItem="sbU-25-DLJ" secondAttribute="centerX" id="CLi-w4-LcX"/>
+                                    <constraint firstItem="Rd7-Tk-rd5" firstAttribute="top" secondItem="sbU-25-DLJ" secondAttribute="top" id="Cfh-I1-xgw"/>
                                     <constraint firstAttribute="width" constant="40" id="Dys-ZR-QbK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rd7-Tk-rd5" secondAttribute="trailing" id="Nch-Yl-iCi"/>
+                                    <constraint firstItem="Rd7-Tk-rd5" firstAttribute="leading" secondItem="sbU-25-DLJ" secondAttribute="leading" id="Vcc-MN-V63"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rd7-Tk-rd5" secondAttribute="trailing" id="Wfm-ce-kEm"/>
+                                    <constraint firstItem="Rd7-Tk-rd5" firstAttribute="top" secondItem="sbU-25-DLJ" secondAttribute="top" id="a2J-0E-1Lq"/>
+                                    <constraint firstAttribute="width" constant="80" id="kCD-hC-890"/>
                                     <constraint firstItem="IF2-jO-Aeb" firstAttribute="centerX" secondItem="sbU-25-DLJ" secondAttribute="centerX" id="lBz-ac-AcL"/>
+                                    <constraint firstItem="Rd7-Tk-rd5" firstAttribute="leading" secondItem="sbU-25-DLJ" secondAttribute="leading" id="rxg-8S-EXT"/>
+                                    <constraint firstAttribute="height" constant="36" id="s9q-B4-sje"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rd7-Tk-rd5" secondAttribute="bottom" id="tau-XJ-edq"/>
+                                    <constraint firstItem="IF2-jO-Aeb" firstAttribute="centerY" secondItem="sbU-25-DLJ" secondAttribute="centerY" id="x90-kl-d3t"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
+                                        <exclude reference="Rd7-Tk-rd5"/>
                                         <exclude reference="IF2-jO-Aeb"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="1zv-H8-gGV"/>
                                         <exclude reference="Dys-ZR-QbK"/>
+                                        <exclude reference="kCD-hC-890"/>
+                                        <exclude reference="s9q-B4-sje"/>
                                         <exclude reference="0wF-vm-aRu"/>
+                                        <exclude reference="CLi-w4-LcX"/>
                                         <exclude reference="lBz-ac-AcL"/>
+                                        <exclude reference="x90-kl-d3t"/>
+                                        <exclude reference="23z-eB-Cjy"/>
+                                        <exclude reference="Cfh-I1-xgw"/>
+                                        <exclude reference="Nch-Yl-iCi"/>
+                                        <exclude reference="Vcc-MN-V63"/>
+                                        <exclude reference="Wfm-ce-kEm"/>
+                                        <exclude reference="a2J-0E-1Lq"/>
+                                        <exclude reference="rxg-8S-EXT"/>
+                                        <exclude reference="tau-XJ-edq"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -873,28 +724,58 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="Rd7-Tk-rd5"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <include reference="0wF-vm-aRu"/>
                                         <include reference="lBz-ac-AcL"/>
+                                        <include reference="23z-eB-Cjy"/>
+                                        <include reference="Nch-Yl-iCi"/>
+                                        <include reference="Vcc-MN-V63"/>
+                                        <include reference="a2J-0E-1Lq"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="Rd7-Tk-rd5"/>
+                                        <include reference="IF2-jO-Aeb"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="kCD-hC-890"/>
+                                        <include reference="s9q-B4-sje"/>
+                                        <include reference="CLi-w4-LcX"/>
+                                        <include reference="x90-kl-d3t"/>
+                                        <include reference="Cfh-I1-xgw"/>
+                                        <include reference="Wfm-ce-kEm"/>
+                                        <include reference="rxg-8S-EXT"/>
+                                        <include reference="tau-XJ-edq"/>
                                     </mask>
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ksu-Ru-SiD" userLabel="DealerScore">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testbar" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-Oe-Qau" userLabel="scoreBackground">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SA5-Xf-qGA" userLabel="dealerScore">
                                         <rect key="frame" x="33" y="0.0" width="13" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="1TP-Y5-Yss"/>
+                                            <constraint firstAttribute="height" constant="36" id="UDZ-EY-oDg"/>
                                             <constraint firstAttribute="height" constant="18" id="u4W-jl-L0R"/>
+                                            <constraint firstAttribute="width" constant="80" id="zUE-vM-lbE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="10"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="1TP-Y5-Yss"/>
+                                                <exclude reference="UDZ-EY-oDg"/>
                                                 <exclude reference="u4W-jl-L0R"/>
+                                                <exclude reference="zUE-vM-lbE"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -903,24 +784,56 @@
                                                 <include reference="u4W-jl-L0R"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
+                                            <mask key="constraints">
+                                                <include reference="UDZ-EY-oDg"/>
+                                                <include reference="zUE-vM-lbE"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="rZn-Oe-Qau" firstAttribute="top" secondItem="Ksu-Ru-SiD" secondAttribute="top" id="1Zf-co-BBd"/>
                                     <constraint firstAttribute="height" constant="18" id="7sB-Xk-CzG"/>
                                     <constraint firstAttribute="width" constant="40" id="9Gj-A9-ko7"/>
+                                    <constraint firstAttribute="height" constant="36" id="C20-ZG-YNu"/>
+                                    <constraint firstAttribute="width" constant="80" id="DB5-ap-p8J"/>
+                                    <constraint firstItem="SA5-Xf-qGA" firstAttribute="centerY" secondItem="Ksu-Ru-SiD" secondAttribute="centerY" id="DvY-pq-se8"/>
+                                    <constraint firstItem="rZn-Oe-Qau" firstAttribute="leading" secondItem="Ksu-Ru-SiD" secondAttribute="leading" id="Mrg-ei-hT8"/>
                                     <constraint firstItem="SA5-Xf-qGA" firstAttribute="centerX" secondItem="Ksu-Ru-SiD" secondAttribute="centerX" id="UlI-HF-jyI"/>
+                                    <constraint firstAttribute="trailing" secondItem="rZn-Oe-Qau" secondAttribute="trailing" id="WWm-FG-5Hr"/>
+                                    <constraint firstItem="rZn-Oe-Qau" firstAttribute="top" secondItem="Ksu-Ru-SiD" secondAttribute="top" id="bVJ-gC-ZaY"/>
                                     <constraint firstItem="SA5-Xf-qGA" firstAttribute="centerY" secondItem="Ksu-Ru-SiD" secondAttribute="centerY" id="hOj-Ka-sL5"/>
+                                    <constraint firstAttribute="trailing" secondItem="rZn-Oe-Qau" secondAttribute="trailing" id="i4v-B3-xIy"/>
+                                    <constraint firstAttribute="bottom" secondItem="rZn-Oe-Qau" secondAttribute="bottom" id="jLv-CP-sSM"/>
+                                    <constraint firstAttribute="bottom" secondItem="rZn-Oe-Qau" secondAttribute="bottom" id="mtx-4A-Ly9"/>
+                                    <constraint firstItem="SA5-Xf-qGA" firstAttribute="centerX" secondItem="Ksu-Ru-SiD" secondAttribute="centerX" id="nll-qZ-Ytu"/>
+                                    <constraint firstItem="rZn-Oe-Qau" firstAttribute="leading" secondItem="Ksu-Ru-SiD" secondAttribute="leading" id="unx-g8-8th"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
+                                        <exclude reference="rZn-Oe-Qau"/>
                                         <exclude reference="SA5-Xf-qGA"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="7sB-Xk-CzG"/>
                                         <exclude reference="9Gj-A9-ko7"/>
+                                        <exclude reference="C20-ZG-YNu"/>
+                                        <exclude reference="DB5-ap-p8J"/>
+                                        <exclude reference="DvY-pq-se8"/>
                                         <exclude reference="UlI-HF-jyI"/>
                                         <exclude reference="hOj-Ka-sL5"/>
+                                        <exclude reference="nll-qZ-Ytu"/>
+                                        <exclude reference="1Zf-co-BBd"/>
+                                        <exclude reference="Mrg-ei-hT8"/>
+                                        <exclude reference="WWm-FG-5Hr"/>
+                                        <exclude reference="bVJ-gC-ZaY"/>
+                                        <exclude reference="i4v-B3-xIy"/>
+                                        <exclude reference="jLv-CP-sSM"/>
+                                        <exclude reference="mtx-4A-Ly9"/>
+                                        <exclude reference="unx-g8-8th"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -933,12 +846,673 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="rZn-Oe-Qau"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <include reference="UlI-HF-jyI"/>
                                         <include reference="hOj-Ka-sL5"/>
+                                        <include reference="Mrg-ei-hT8"/>
+                                        <include reference="WWm-FG-5Hr"/>
+                                        <include reference="bVJ-gC-ZaY"/>
+                                        <include reference="mtx-4A-Ly9"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="rZn-Oe-Qau"/>
+                                        <include reference="SA5-Xf-qGA"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="C20-ZG-YNu"/>
+                                        <include reference="DB5-ap-p8J"/>
+                                        <include reference="DvY-pq-se8"/>
+                                        <include reference="nll-qZ-Ytu"/>
+                                        <include reference="1Zf-co-BBd"/>
+                                        <include reference="i4v-B3-xIy"/>
+                                        <include reference="jLv-CP-sSM"/>
+                                        <include reference="unx-g8-8th"/>
                                     </mask>
                                 </variation>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" alignment="center" spacing="-90" translatesAutoresizingMaskIntoConstraints="NO" id="had-Hd-KBj" userLabel="playerCards">
+                                <rect key="frame" x="135" y="315" width="910" height="726"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="Gag-O8-DoA" userLabel="playerCard1" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="726"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="W51-Ry-5HJ"/>
+                                            <constraint firstAttribute="width" secondItem="Gag-O8-DoA" secondAttribute="height" multiplier="157:213" id="eXV-zt-7yy"/>
+                                            <constraint firstAttribute="width" constant="284" id="xoF-Ru-eor"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="W51-Ry-5HJ"/>
+                                                <exclude reference="eXV-zt-7yy"/>
+                                                <exclude reference="xoF-Ru-eor"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="eXV-zt-7yy"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="W51-Ry-5HJ"/>
+                                                <include reference="xoF-Ru-eor"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="LVk-gU-eYf" userLabel="playerCard2" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="410" y="158" width="500" height="411"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="284" id="2Qf-Qh-ddr"/>
+                                            <constraint firstAttribute="height" constant="390" id="2ke-Kx-Odj"/>
+                                            <constraint firstAttribute="width" secondItem="LVk-gU-eYf" secondAttribute="height" multiplier="157:213" id="9fo-xD-zv4"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="2Qf-Qh-ddr"/>
+                                                <exclude reference="2ke-Kx-Odj"/>
+                                                <exclude reference="9fo-xD-zv4"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="9fo-xD-zv4"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="2Qf-Qh-ddr"/>
+                                                <include reference="2ke-Kx-Odj"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pJ-t1-qpx" userLabel="playerCard3" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="62I-on-qyv"/>
+                                            <constraint firstAttribute="width" constant="284" id="Hhj-34-paM"/>
+                                            <constraint firstAttribute="width" secondItem="7pJ-t1-qpx" secondAttribute="height" multiplier="157:213" id="ql9-Gq-zZ9"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="62I-on-qyv"/>
+                                                <exclude reference="Hhj-34-paM"/>
+                                                <exclude reference="ql9-Gq-zZ9"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="ql9-Gq-zZ9"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="62I-on-qyv"/>
+                                                <include reference="Hhj-34-paM"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSx-c7-qk3" userLabel="playerCard4" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="SSx-c7-qk3" secondAttribute="height" multiplier="157:213" id="Afi-Wt-zCU"/>
+                                            <constraint firstAttribute="width" constant="284" id="POU-qY-1zN"/>
+                                            <constraint firstAttribute="height" constant="390" id="s5U-DE-gzZ"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Afi-Wt-zCU"/>
+                                                <exclude reference="POU-qY-1zN"/>
+                                                <exclude reference="s5U-DE-gzZ"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Afi-Wt-zCU"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="POU-qY-1zN"/>
+                                                <include reference="s5U-DE-gzZ"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDB-Rb-XKo" userLabel="playerCard5" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="tDB-Rb-XKo" secondAttribute="height" multiplier="157:213" id="Qz8-rQ-IVl"/>
+                                            <constraint firstAttribute="height" constant="390" id="XXg-gy-RDw"/>
+                                            <constraint firstAttribute="width" constant="284" id="bRm-QG-CHO"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Qz8-rQ-IVl"/>
+                                                <exclude reference="XXg-gy-RDw"/>
+                                                <exclude reference="bRm-QG-CHO"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Qz8-rQ-IVl"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="XXg-gy-RDw"/>
+                                                <include reference="bRm-QG-CHO"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nub-a1-mRk" userLabel="playerCard6" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="284" id="DKO-qC-HaG"/>
+                                            <constraint firstAttribute="height" constant="390" id="I8l-bJ-JiM"/>
+                                            <constraint firstAttribute="width" secondItem="nub-a1-mRk" secondAttribute="height" multiplier="157:213" id="LJm-3J-zuq"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="DKO-qC-HaG"/>
+                                                <exclude reference="I8l-bJ-JiM"/>
+                                                <exclude reference="LJm-3J-zuq"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="LJm-3J-zuq"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="DKO-qC-HaG"/>
+                                                <include reference="I8l-bJ-JiM"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWc-nH-Hep" userLabel="playerCard7" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="Ot3-cA-rSZ"/>
+                                            <constraint firstAttribute="width" secondItem="xWc-nH-Hep" secondAttribute="height" multiplier="157:213" id="YTv-pf-iYf"/>
+                                            <constraint firstAttribute="width" constant="284" id="Yjd-P3-6vL"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Ot3-cA-rSZ"/>
+                                                <exclude reference="YTv-pf-iYf"/>
+                                                <exclude reference="Yjd-P3-6vL"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="YTv-pf-iYf"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="Ot3-cA-rSZ"/>
+                                                <include reference="Yjd-P3-6vL"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q97-So-ROP" userLabel="playerCard8" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="B17-63-jbI"/>
+                                            <constraint firstAttribute="width" constant="284" id="Q4U-JD-o6R"/>
+                                            <constraint firstAttribute="width" secondItem="Q97-So-ROP" secondAttribute="height" multiplier="157:213" id="xwr-qb-ljJ"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="B17-63-jbI"/>
+                                                <exclude reference="Q4U-JD-o6R"/>
+                                                <exclude reference="xwr-qb-ljJ"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="xwr-qb-ljJ"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="B17-63-jbI"/>
+                                                <include reference="Q4U-JD-o6R"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6HF-Fb-4T3" userLabel="playerCard9" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="6HF-Fb-4T3" secondAttribute="height" multiplier="157:213" id="5fG-qm-htZ"/>
+                                            <constraint firstAttribute="width" constant="284" id="b7n-At-Yue"/>
+                                            <constraint firstAttribute="height" constant="390" id="lhb-xD-piL"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="5fG-qm-htZ"/>
+                                                <exclude reference="b7n-At-Yue"/>
+                                                <exclude reference="lhb-xD-piL"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="5fG-qm-htZ"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="b7n-At-Yue"/>
+                                                <include reference="lhb-xD-piL"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PlU-rh-f12" userLabel="playerCard10" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="PlU-rh-f12" secondAttribute="height" multiplier="157:213" id="Wb1-bb-YZ1"/>
+                                            <constraint firstAttribute="width" constant="284" id="ZUW-np-TmD"/>
+                                            <constraint firstAttribute="height" constant="390" id="quI-M7-27g"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Wb1-bb-YZ1"/>
+                                                <exclude reference="ZUW-np-TmD"/>
+                                                <exclude reference="quI-M7-27g"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Wb1-bb-YZ1"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="ZUW-np-TmD"/>
+                                                <include reference="quI-M7-27g"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1L-za-rcd" userLabel="playerCard11" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="MSf-Vp-C3r"/>
+                                            <constraint firstAttribute="width" secondItem="m1L-za-rcd" secondAttribute="height" multiplier="157:213" id="Tax-is-xji"/>
+                                            <constraint firstAttribute="width" constant="284" id="gHU-Rp-SGU"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="MSf-Vp-C3r"/>
+                                                <exclude reference="Tax-is-xji"/>
+                                                <exclude reference="gHU-Rp-SGU"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Tax-is-xji"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="MSf-Vp-C3r"/>
+                                                <include reference="gHU-Rp-SGU"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRh-qm-9za" userLabel="playerCard12" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="2pX-NN-dhT"/>
+                                            <constraint firstAttribute="width" secondItem="rRh-qm-9za" secondAttribute="height" multiplier="157:213" id="op4-1A-5ik"/>
+                                            <constraint firstAttribute="width" constant="284" id="tnm-3q-UpP"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="2pX-NN-dhT"/>
+                                                <exclude reference="op4-1A-5ik"/>
+                                                <exclude reference="tnm-3q-UpP"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="op4-1A-5ik"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="2pX-NN-dhT"/>
+                                                <include reference="tnm-3q-UpP"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
+                                <variation key="heightClass=regular-widthClass=compact" axis="horizontal"/>
+                                <variation key="heightClass=regular-widthClass=regular" axis="horizontal" distribution="fillEqually" spacing="-150"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" alignment="center" spacing="-90" translatesAutoresizingMaskIntoConstraints="NO" id="Gh3-bC-NvB" userLabel="dealerCards">
+                                <rect key="frame" x="102" y="32" width="510" height="435"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="qM3-NK-IgL" userLabel="dealerCard1" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="435"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="5OB-6D-rVD"/>
+                                            <constraint firstAttribute="width" constant="284" id="rRg-ac-H1o"/>
+                                            <constraint firstAttribute="width" secondItem="qM3-NK-IgL" secondAttribute="height" multiplier="157:213" id="wxT-CM-AGp"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="5OB-6D-rVD"/>
+                                                <exclude reference="rRg-ac-H1o"/>
+                                                <exclude reference="wxT-CM-AGp"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="wxT-CM-AGp"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="5OB-6D-rVD"/>
+                                                <include reference="rRg-ac-H1o"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="Iba-Ql-cah" userLabel="dealerCard2" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="210" y="0.0" width="300" height="435"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="284" id="AIK-Wg-fU8"/>
+                                            <constraint firstAttribute="width" secondItem="Iba-Ql-cah" secondAttribute="height" multiplier="157:213" id="pRY-LW-1Wl"/>
+                                            <constraint firstAttribute="height" constant="390" id="yii-oA-8X1"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="AIK-Wg-fU8"/>
+                                                <exclude reference="pRY-LW-1Wl"/>
+                                                <exclude reference="yii-oA-8X1"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="pRY-LW-1Wl"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="AIK-Wg-fU8"/>
+                                                <include reference="yii-oA-8X1"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5hF-V5-USb" userLabel="dealerCard3" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5hF-V5-USb" secondAttribute="height" multiplier="157:213" id="VgG-MW-jwX"/>
+                                            <constraint firstAttribute="width" constant="284" id="iKv-Ny-wlk"/>
+                                            <constraint firstAttribute="height" constant="390" id="vGk-BX-jRo"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="VgG-MW-jwX"/>
+                                                <exclude reference="iKv-Ny-wlk"/>
+                                                <exclude reference="vGk-BX-jRo"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="VgG-MW-jwX"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="iKv-Ny-wlk"/>
+                                                <include reference="vGk-BX-jRo"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OTf-Ib-UPt" userLabel="dealerCard4" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="OTf-Ib-UPt" secondAttribute="height" multiplier="157:213" id="6nK-P9-meZ"/>
+                                            <constraint firstAttribute="width" constant="284" id="7k0-Tu-8WG"/>
+                                            <constraint firstAttribute="height" constant="390" id="Wji-wx-Vwg"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="6nK-P9-meZ"/>
+                                                <exclude reference="7k0-Tu-8WG"/>
+                                                <exclude reference="Wji-wx-Vwg"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="6nK-P9-meZ"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="7k0-Tu-8WG"/>
+                                                <include reference="Wji-wx-Vwg"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wju-22-yhR" userLabel="dealerCard5" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="284" id="5Xk-hV-n3m"/>
+                                            <constraint firstAttribute="height" constant="390" id="nqg-bX-p0A"/>
+                                            <constraint firstAttribute="width" secondItem="Wju-22-yhR" secondAttribute="height" multiplier="157:213" id="saI-Wx-WQK"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="5Xk-hV-n3m"/>
+                                                <exclude reference="nqg-bX-p0A"/>
+                                                <exclude reference="saI-Wx-WQK"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="saI-Wx-WQK"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="5Xk-hV-n3m"/>
+                                                <include reference="nqg-bX-p0A"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8yR-eZ-d0G" userLabel="dealerCard6" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8yR-eZ-d0G" secondAttribute="height" multiplier="157:213" id="ZUm-LB-g62"/>
+                                            <constraint firstAttribute="height" constant="390" id="nYi-75-hKt"/>
+                                            <constraint firstAttribute="width" constant="284" id="z0t-76-Vji"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="ZUm-LB-g62"/>
+                                                <exclude reference="nYi-75-hKt"/>
+                                                <exclude reference="z0t-76-Vji"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="ZUm-LB-g62"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="nYi-75-hKt"/>
+                                                <include reference="z0t-76-Vji"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LHI-vT-vwz" userLabel="dealerCard7" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="c9n-nq-CwN"/>
+                                            <constraint firstAttribute="width" constant="284" id="gKW-tc-dxU"/>
+                                            <constraint firstAttribute="width" secondItem="LHI-vT-vwz" secondAttribute="height" multiplier="157:213" id="rPn-VH-kh6"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="c9n-nq-CwN"/>
+                                                <exclude reference="gKW-tc-dxU"/>
+                                                <exclude reference="rPn-VH-kh6"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="rPn-VH-kh6"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="c9n-nq-CwN"/>
+                                                <include reference="gKW-tc-dxU"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eSg-Yg-YiQ" userLabel="dealerCard8" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="cT3-Fw-KhW"/>
+                                            <constraint firstAttribute="width" constant="284" id="dAo-jy-MR9"/>
+                                            <constraint firstAttribute="width" secondItem="eSg-Yg-YiQ" secondAttribute="height" multiplier="157:213" id="uwd-mU-VjT"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="cT3-Fw-KhW"/>
+                                                <exclude reference="dAo-jy-MR9"/>
+                                                <exclude reference="uwd-mU-VjT"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="uwd-mU-VjT"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="cT3-Fw-KhW"/>
+                                                <include reference="dAo-jy-MR9"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pqg-0Z-d39" userLabel="dealerCard9" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Pqg-0Z-d39" secondAttribute="height" multiplier="157:213" id="Vn6-zW-Qai"/>
+                                            <constraint firstAttribute="height" constant="390" id="YMj-B8-3aU"/>
+                                            <constraint firstAttribute="width" constant="284" id="k1R-49-ADh"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Vn6-zW-Qai"/>
+                                                <exclude reference="YMj-B8-3aU"/>
+                                                <exclude reference="k1R-49-ADh"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Vn6-zW-Qai"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="YMj-B8-3aU"/>
+                                                <include reference="k1R-49-ADh"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jks-bS-mvp" userLabel="dealerCard10" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="390" id="5s0-6I-EpL"/>
+                                            <constraint firstAttribute="width" secondItem="Jks-bS-mvp" secondAttribute="height" multiplier="157:213" id="faW-du-H4x"/>
+                                            <constraint firstAttribute="width" constant="284" id="qgJ-b1-MaY"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="5s0-6I-EpL"/>
+                                                <exclude reference="faW-du-H4x"/>
+                                                <exclude reference="qgJ-b1-MaY"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="faW-du-H4x"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="5s0-6I-EpL"/>
+                                                <include reference="qgJ-b1-MaY"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LhG-BD-HIO" userLabel="dealerCard11" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="284" id="HuR-SL-eHR"/>
+                                            <constraint firstAttribute="width" secondItem="LhG-BD-HIO" secondAttribute="height" multiplier="157:213" id="fwU-ie-Wcz"/>
+                                            <constraint firstAttribute="height" constant="390" id="nGg-1q-oSB"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="HuR-SL-eHR"/>
+                                                <exclude reference="fwU-ie-Wcz"/>
+                                                <exclude reference="nGg-1q-oSB"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="fwU-ie-Wcz"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="HuR-SL-eHR"/>
+                                                <include reference="nGg-1q-oSB"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-d5-xwg" userLabel="dealerCard12" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="284" id="00A-CK-MDp"/>
+                                            <constraint firstAttribute="width" secondItem="RiF-d5-xwg" secondAttribute="height" multiplier="157:213" id="3rF-gg-hhV"/>
+                                            <constraint firstAttribute="height" constant="390" id="Gli-3O-h0Q"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="00A-CK-MDp"/>
+                                                <exclude reference="3rF-gg-hhV"/>
+                                                <exclude reference="Gli-3O-h0Q"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="3rF-gg-hhV"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="00A-CK-MDp"/>
+                                                <include reference="Gli-3O-h0Q"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
+                                <variation key="heightClass=regular-widthClass=compact" axis="horizontal"/>
+                                <variation key="heightClass=regular-widthClass=regular" spacing="-150"/>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSt-2j-Otv" userLabel="MessageView">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
@@ -948,7 +1522,7 @@
                                             <constraint firstAttribute="height" constant="59" id="7DO-2A-TlB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -960,11 +1534,16 @@
                                                 <include reference="7DO-2A-TlB"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="hQ3-SH-UAd" firstAttribute="centerY" secondItem="DSt-2j-Otv" secondAttribute="centerY" id="Fej-qu-pyv"/>
+                                    <constraint firstItem="hQ3-SH-UAd" firstAttribute="centerX" secondItem="DSt-2j-Otv" secondAttribute="centerX" id="WUM-xD-kDg"/>
                                     <constraint firstItem="hQ3-SH-UAd" firstAttribute="centerX" secondItem="DSt-2j-Otv" secondAttribute="centerX" id="o3J-K7-LDC"/>
+                                    <constraint firstItem="hQ3-SH-UAd" firstAttribute="centerY" secondItem="DSt-2j-Otv" secondAttribute="centerY" id="wNn-aB-LLs"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -972,7 +1551,9 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="Fej-qu-pyv"/>
+                                        <exclude reference="WUM-xD-kDg"/>
                                         <exclude reference="o3J-K7-LDC"/>
+                                        <exclude reference="wNn-aB-LLs"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -984,61 +1565,116 @@
                                         <include reference="o3J-K7-LDC"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="hQ3-SH-UAd"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="WUM-xD-kDg"/>
+                                        <include reference="wNn-aB-LLs"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sbU-25-DLJ" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="11Q-4r-Qfv"/>
                             <constraint firstItem="Gh3-bC-NvB" firstAttribute="height" secondItem="Phd-8t-bo4" secondAttribute="height" multiplier="0.3" id="23Z-kM-dIz"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="2ay-Gp-vcG"/>
+                            <constraint firstItem="sbU-25-DLJ" firstAttribute="top" secondItem="had-Hd-KBj" secondAttribute="bottom" constant="8" id="2ld-Jh-nbX"/>
+                            <constraint firstItem="Gh3-bC-NvB" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="3Gd-Y4-IOH"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="3fm-cb-Yw1"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="top" secondItem="DSt-2j-Otv" secondAttribute="bottom" constant="1" id="5I4-ys-nAb"/>
                             <constraint firstItem="rUv-Ik-p3U" firstAttribute="top" secondItem="sbU-25-DLJ" secondAttribute="bottom" constant="3" id="ARC-r8-FM0"/>
+                            <constraint firstItem="rUv-Ik-p3U" firstAttribute="top" secondItem="sbU-25-DLJ" secondAttribute="bottom" constant="8" id="AoQ-Ud-sje"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="AtM-uC-dHl"/>
                             <constraint firstItem="DSt-2j-Otv" firstAttribute="top" secondItem="Gh3-bC-NvB" secondAttribute="top" id="BLT-iY-1gr"/>
                             <constraint firstAttribute="trailing" secondItem="Hy5-eN-uH4" secondAttribute="trailing" id="BkU-eC-Znw"/>
+                            <constraint firstItem="Hy5-eN-uH4" firstAttribute="top" secondItem="rUv-Ik-p3U" secondAttribute="bottom" constant="1" id="CW7-Nx-mhD"/>
+                            <constraint firstItem="r5L-YV-J5a" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="CdA-YN-BEj"/>
+                            <constraint firstAttribute="trailing" secondItem="rUv-Ik-p3U" secondAttribute="trailing" id="ClY-48-KwN"/>
+                            <constraint firstItem="DSt-2j-Otv" firstAttribute="top" secondItem="Gh3-bC-NvB" secondAttribute="bottom" constant="1" id="DVX-jS-6Ym"/>
+                            <constraint firstItem="Gh3-bC-NvB" firstAttribute="height" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="height" multiplier="0.3" id="EDD-LU-Klp"/>
+                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="Hy5-eN-uH4" secondAttribute="bottom" id="EKb-iH-3kA"/>
+                            <constraint firstItem="DSt-2j-Otv" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="GYQ-It-AYg"/>
                             <constraint firstItem="had-Hd-KBj" firstAttribute="width" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="width" id="GuE-y6-2Wt"/>
+                            <constraint firstItem="r5L-YV-J5a" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="top" id="IDx-NP-MZZ"/>
                             <constraint firstItem="rUv-Ik-p3U" firstAttribute="top" secondItem="DSt-2j-Otv" secondAttribute="bottom" id="J6J-8q-7N0"/>
                             <constraint firstItem="sbU-25-DLJ" firstAttribute="top" secondItem="had-Hd-KBj" secondAttribute="bottom" constant="8" id="LpJ-8X-wTs"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="topMargin" constant="8" id="Mua-e0-AtC"/>
+                            <constraint firstAttribute="trailing" secondItem="DSt-2j-Otv" secondAttribute="trailing" id="Nhh-62-vPm"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="height" secondItem="Phd-8t-bo4" secondAttribute="height" multiplier="0.5" id="OtP-Nd-ESb"/>
+                            <constraint firstItem="Ksu-Ru-SiD" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="PNL-pE-n7S"/>
                             <constraint firstItem="had-Hd-KBj" firstAttribute="height" secondItem="Phd-8t-bo4" secondAttribute="height" multiplier="0.3" id="Q5X-GK-Q22"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="jP6-ua-fYP" secondAttribute="bottom" id="QLu-MZ-3VH"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="centerY" secondItem="Phd-8t-bo4" secondAttribute="centerY" id="S8e-hS-qN7"/>
+                            <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="top" constant="8" id="SGY-ud-JBJ"/>
+                            <constraint firstItem="Hy5-eN-uH4" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="Tfw-FV-pCU"/>
                             <constraint firstItem="Hy5-eN-uH4" firstAttribute="top" secondItem="rUv-Ik-p3U" secondAttribute="bottom" constant="1" id="V8v-rp-Eb6"/>
                             <constraint firstItem="Gh3-bC-NvB" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="VMj-mu-YEa"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="WnC-gM-fgQ"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="width" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="width" id="Y8O-An-NEx"/>
                             <constraint firstItem="r5L-YV-J5a" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="top" id="Ycl-DZ-xUi"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="ZbK-HL-dEl"/>
                             <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="r5L-YV-J5a" secondAttribute="bottom" id="c3u-xC-5UL"/>
                             <constraint firstItem="Gh3-bC-NvB" firstAttribute="top" secondItem="Ksu-Ru-SiD" secondAttribute="bottom" constant="8" id="cC9-5A-YjX"/>
                             <constraint firstItem="Hy5-eN-uH4" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="ckF-oc-167"/>
                             <constraint firstAttribute="trailing" secondItem="DSt-2j-Otv" secondAttribute="trailing" id="d8p-ZA-3T2"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="top" constant="4" id="drq-J0-hE5"/>
+                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="r5L-YV-J5a" secondAttribute="bottom" id="eBS-4n-1hs"/>
+                            <constraint firstAttribute="trailing" secondItem="Hy5-eN-uH4" secondAttribute="trailing" id="fw5-X2-adT"/>
                             <constraint firstItem="DSt-2j-Otv" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="gJV-lr-1Sb"/>
                             <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="Hy5-eN-uH4" secondAttribute="bottom" id="gnL-54-Imi"/>
+                            <constraint firstItem="Gh3-bC-NvB" firstAttribute="top" secondItem="Ksu-Ru-SiD" secondAttribute="bottom" constant="8" id="ia4-UU-khW"/>
+                            <constraint firstAttribute="trailing" secondItem="r5L-YV-J5a" secondAttribute="trailing" id="jBV-j7-9ay"/>
                             <constraint firstAttribute="trailing" secondItem="r5L-YV-J5a" secondAttribute="trailing" id="jsB-cs-6lj"/>
                             <constraint firstItem="DSt-2j-Otv" firstAttribute="bottom" secondItem="had-Hd-KBj" secondAttribute="bottom" id="l2m-N9-Uxx"/>
                             <constraint firstItem="Gh3-bC-NvB" firstAttribute="width" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="width" id="lAE-nr-qNO"/>
+                            <constraint firstItem="sbU-25-DLJ" firstAttribute="top" secondItem="had-Hd-KBj" secondAttribute="bottom" constant="8" id="ozu-kN-NOd"/>
                             <constraint firstItem="r5L-YV-J5a" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="pP9-sg-pY8"/>
                             <constraint firstAttribute="trailing" secondItem="rUv-Ik-p3U" secondAttribute="trailing" id="pUt-Lo-H72"/>
+                            <constraint firstItem="rUv-Ik-p3U" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="pdq-Ag-31B"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="height" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="height" multiplier="0.3" id="qgi-sX-KsS"/>
                             <constraint firstItem="DSt-2j-Otv" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="rHB-n8-obL"/>
+                            <constraint firstItem="sbU-25-DLJ" firstAttribute="top" secondItem="had-Hd-KBj" secondAttribute="bottom" constant="8" id="rIy-Tu-bZJ"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="topMargin" constant="3" id="tir-Jm-Jg3"/>
                             <constraint firstAttribute="trailing" secondItem="DSt-2j-Otv" secondAttribute="trailing" id="tmJ-rD-DzK"/>
+                            <constraint firstItem="Gh3-bC-NvB" firstAttribute="width" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="width" id="u7E-nM-CMF"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="width" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="width" id="u88-P2-TYH"/>
+                            <constraint firstItem="sbU-25-DLJ" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="wbf-FE-DI9"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="height" secondItem="Phd-8t-bo4" secondAttribute="height" multiplier="0.5" id="wfU-SF-gHb">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="rUv-Ik-p3U" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="wm7-Jh-QRa"/>
+                            <constraint firstItem="had-Hd-KBj" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="yEh-eu-4zG"/>
                             <constraint firstItem="had-Hd-KBj" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="z2F-kE-dYi"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="rUv-Ik-p3U"/>
                                 <exclude reference="Hy5-eN-uH4"/>
+                                <exclude reference="rUv-Ik-p3U"/>
                                 <exclude reference="sbU-25-DLJ"/>
                                 <exclude reference="Ksu-Ru-SiD"/>
                                 <exclude reference="DSt-2j-Otv"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="ARC-r8-FM0"/>
+                                <exclude reference="AoQ-Ud-sje"/>
+                                <exclude reference="ClY-48-KwN"/>
                                 <exclude reference="J6J-8q-7N0"/>
                                 <exclude reference="pUt-Lo-H72"/>
+                                <exclude reference="pdq-Ag-31B"/>
                                 <exclude reference="wm7-Jh-QRa"/>
                                 <exclude reference="BkU-eC-Znw"/>
+                                <exclude reference="CW7-Nx-mhD"/>
+                                <exclude reference="Tfw-FV-pCU"/>
                                 <exclude reference="V8v-rp-Eb6"/>
                                 <exclude reference="ckF-oc-167"/>
+                                <exclude reference="fw5-X2-adT"/>
                                 <exclude reference="BLT-iY-1gr"/>
+                                <exclude reference="DVX-jS-6Ym"/>
+                                <exclude reference="GYQ-It-AYg"/>
+                                <exclude reference="Nhh-62-vPm"/>
                                 <exclude reference="d8p-ZA-3T2"/>
                                 <exclude reference="gJV-lr-1Sb"/>
                                 <exclude reference="l2m-N9-Uxx"/>
@@ -1046,30 +1682,56 @@
                                 <exclude reference="tmJ-rD-DzK"/>
                                 <exclude reference="3fm-cb-Yw1"/>
                                 <exclude reference="Mua-e0-AtC"/>
+                                <exclude reference="PNL-pE-n7S"/>
                                 <exclude reference="QLu-MZ-3VH"/>
+                                <exclude reference="SGY-ud-JBJ"/>
                                 <exclude reference="WnC-gM-fgQ"/>
                                 <exclude reference="drq-J0-hE5"/>
                                 <exclude reference="tir-Jm-Jg3"/>
                                 <exclude reference="11Q-4r-Qfv"/>
+                                <exclude reference="2ld-Jh-nbX"/>
                                 <exclude reference="LpJ-8X-wTs"/>
+                                <exclude reference="ozu-kN-NOd"/>
+                                <exclude reference="rIy-Tu-bZJ"/>
+                                <exclude reference="wbf-FE-DI9"/>
+                                <exclude reference="CdA-YN-BEj"/>
+                                <exclude reference="IDx-NP-MZZ"/>
                                 <exclude reference="Ycl-DZ-xUi"/>
+                                <exclude reference="jBV-j7-9ay"/>
                                 <exclude reference="jsB-cs-6lj"/>
                                 <exclude reference="pP9-sg-pY8"/>
                                 <exclude reference="23Z-kM-dIz"/>
+                                <exclude reference="3Gd-Y4-IOH"/>
+                                <exclude reference="EDD-LU-Klp"/>
                                 <exclude reference="VMj-mu-YEa"/>
                                 <exclude reference="cC9-5A-YjX"/>
+                                <exclude reference="ia4-UU-khW"/>
                                 <exclude reference="lAE-nr-qNO"/>
+                                <exclude reference="u7E-nM-CMF"/>
+                                <exclude reference="2ay-Gp-vcG"/>
+                                <exclude reference="5I4-ys-nAb"/>
+                                <exclude reference="AtM-uC-dHl"/>
                                 <exclude reference="GuE-y6-2Wt"/>
+                                <exclude reference="OtP-Nd-ESb"/>
                                 <exclude reference="Q5X-GK-Q22"/>
+                                <exclude reference="S8e-hS-qN7"/>
+                                <exclude reference="Y8O-An-NEx"/>
+                                <exclude reference="ZbK-HL-dEl"/>
+                                <exclude reference="qgi-sX-KsS"/>
+                                <exclude reference="u88-P2-TYH"/>
+                                <exclude reference="wfU-SF-gHb"/>
+                                <exclude reference="yEh-eu-4zG"/>
                                 <exclude reference="z2F-kE-dYi"/>
+                                <exclude reference="EKb-iH-3kA"/>
                                 <exclude reference="c3u-xC-5UL"/>
+                                <exclude reference="eBS-4n-1hs"/>
                                 <exclude reference="gnL-54-Imi"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="rUv-Ik-p3U"/>
                                 <include reference="Hy5-eN-uH4"/>
+                                <include reference="rUv-Ik-p3U"/>
                                 <include reference="sbU-25-DLJ"/>
                                 <include reference="Ksu-Ru-SiD"/>
                                 <include reference="DSt-2j-Otv"/>
@@ -1116,6 +1778,55 @@
                                 <include reference="GuE-y6-2Wt"/>
                                 <include reference="Q5X-GK-Q22"/>
                                 <include reference="z2F-kE-dYi"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="r5L-YV-J5a"/>
+                                <include reference="Hy5-eN-uH4"/>
+                                <include reference="rUv-Ik-p3U"/>
+                                <include reference="sbU-25-DLJ"/>
+                                <include reference="Ksu-Ru-SiD"/>
+                                <include reference="had-Hd-KBj"/>
+                                <include reference="Gh3-bC-NvB"/>
+                                <include reference="DSt-2j-Otv"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="AoQ-Ud-sje"/>
+                                <include reference="ClY-48-KwN"/>
+                                <include reference="pdq-Ag-31B"/>
+                                <include reference="CW7-Nx-mhD"/>
+                                <include reference="Tfw-FV-pCU"/>
+                                <include reference="fw5-X2-adT"/>
+                                <include reference="DVX-jS-6Ym"/>
+                                <include reference="GYQ-It-AYg"/>
+                                <include reference="Nhh-62-vPm"/>
+                                <include reference="PNL-pE-n7S"/>
+                                <include reference="SGY-ud-JBJ"/>
+                                <exclude reference="2ld-Jh-nbX"/>
+                                <exclude reference="ozu-kN-NOd"/>
+                                <include reference="rIy-Tu-bZJ"/>
+                                <include reference="wbf-FE-DI9"/>
+                                <include reference="CdA-YN-BEj"/>
+                                <include reference="IDx-NP-MZZ"/>
+                                <include reference="jBV-j7-9ay"/>
+                                <include reference="3Gd-Y4-IOH"/>
+                                <include reference="EDD-LU-Klp"/>
+                                <include reference="ia4-UU-khW"/>
+                                <include reference="u7E-nM-CMF"/>
+                                <exclude reference="2ay-Gp-vcG"/>
+                                <include reference="5I4-ys-nAb"/>
+                                <exclude reference="AtM-uC-dHl"/>
+                                <exclude reference="OtP-Nd-ESb"/>
+                                <exclude reference="S8e-hS-qN7"/>
+                                <exclude reference="Y8O-An-NEx"/>
+                                <exclude reference="ZbK-HL-dEl"/>
+                                <include reference="qgi-sX-KsS"/>
+                                <include reference="u88-P2-TYH"/>
+                                <exclude reference="wfU-SF-gHb"/>
+                                <include reference="yEh-eu-4zG"/>
+                                <include reference="EKb-iH-3kA"/>
+                                <include reference="eBS-4n-1hs"/>
                             </mask>
                         </variation>
                     </view>
@@ -1168,11 +1879,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="600" height="960"/>
         <image name="blackchip" width="367" height="368"/>
-        <image name="bluechip" width="367" height="367"/>
-        <image name="cardback2" width="300" height="435"/>
-        <image name="greenchip" width="367" height="367"/>
+        <image name="bluechip" width="367" height="368"/>
+        <image name="cardback" width="283" height="411"/>
+        <image name="greenchip" width="367" height="368"/>
         <image name="redchip" width="367" height="368"/>
+        <image name="testbackground4" width="800" height="1279"/>
+        <image name="testbar" width="800" height="80"/>
     </resources>
 </document>

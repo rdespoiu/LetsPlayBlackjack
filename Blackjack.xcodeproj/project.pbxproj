@@ -19,6 +19,7 @@
 		AF1FE7611C041B69005013D7 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE7601C041B69005013D7 /* Cards.swift */; };
 		AF2D11C61C0B75A70059C314 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D11C51C0B75A70059C314 /* UIViewExtensions.swift */; };
 		AF901F471C0921F400BB112A /* CardFlipAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF901F461C0921F400BB112A /* CardFlipAnimation.swift */; };
+		AF9E5ADC1C1E1BD400DDD555 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		AF1FE7601C041B69005013D7 /* Cards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		AF2D11C51C0B75A70059C314 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		AF901F461C0921F400BB112A /* CardFlipAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFlipAnimation.swift; sourceTree = "<group>"; };
+		AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9E5ADC1C1E1BD400DDD555 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +90,7 @@
 		AF1FE71B1C03FE44005013D7 = {
 			isa = PBXGroup;
 			children = (
+				AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */,
 				AF1FE7261C03FE44005013D7 /* Blackjack */,
 				AF1FE73B1C03FE44005013D7 /* War-CardGameTests */,
 				AF1FE7461C03FE44005013D7 /* War-CardGameUITests */,
