@@ -18,8 +18,6 @@
 		AF1FE75D1C04060B005013D7 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE75C1C04060B005013D7 /* GameController.swift */; };
 		AF1FE7611C041B69005013D7 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE7601C041B69005013D7 /* Cards.swift */; };
 		AF2D11C61C0B75A70059C314 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D11C51C0B75A70059C314 /* UIViewExtensions.swift */; };
-		AF5370081C21C93000399976 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5370071C21C93000399976 /* DataController.swift */; };
-		AF53700B1C21C98F00399976 /* data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF5370091C21C98F00399976 /* data.xcdatamodeld */; };
 		AF901F471C0921F400BB112A /* CardFlipAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF901F461C0921F400BB112A /* CardFlipAnimation.swift */; };
 		AF9E5ADC1C1E1BD400DDD555 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */; };
 /* End PBXBuildFile section */
@@ -59,8 +57,6 @@
 		AF1FE75C1C04060B005013D7 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		AF1FE7601C041B69005013D7 /* Cards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		AF2D11C51C0B75A70059C314 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
-		AF5370071C21C93000399976 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		AF53700A1C21C98F00399976 /* data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = data.xcdatamodel; sourceTree = "<group>"; };
 		AF901F461C0921F400BB112A /* CardFlipAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFlipAnimation.swift; sourceTree = "<group>"; };
 		AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -124,7 +120,6 @@
 				AF1FE72E1C03FE44005013D7 /* Assets.xcassets */,
 				AF1FE7301C03FE44005013D7 /* LaunchScreen.storyboard */,
 				AF1FE7331C03FE44005013D7 /* Info.plist */,
-				AF5370091C21C98F00399976 /* data.xcdatamodeld */,
 			);
 			name = Blackjack;
 			path = "War-CardGame";
@@ -170,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				AF1FE75C1C04060B005013D7 /* GameController.swift */,
-				AF5370071C21C93000399976 /* DataController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -311,8 +305,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF53700B1C21C98F00399976 /* data.xcdatamodeld in Sources */,
-				AF5370081C21C93000399976 /* DataController.swift in Sources */,
 				AF1FE75D1C04060B005013D7 /* GameController.swift in Sources */,
 				AF2D11C61C0B75A70059C314 /* UIViewExtensions.swift in Sources */,
 				AF1FE7281C03FE44005013D7 /* AppDelegate.swift in Sources */,
@@ -567,19 +559,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		AF5370091C21C98F00399976 /* data.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				AF53700A1C21C98F00399976 /* data.xcdatamodel */,
-			);
-			currentVersion = AF53700A1C21C98F00399976 /* data.xcdatamodel */;
-			path = data.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = AF1FE71C1C03FE44005013D7 /* Project object */;
 }
