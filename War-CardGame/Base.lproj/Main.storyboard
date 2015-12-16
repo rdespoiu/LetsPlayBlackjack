@@ -247,14 +247,6 @@
                                     <mask key="constraints">
                                         <exclude reference="Nwt-8g-ouV"/>
                                         <exclude reference="kJ8-Mw-R8z"/>
-                                        <exclude reference="8Rp-M0-JL6"/>
-                                        <exclude reference="Gb3-ec-wno"/>
-                                        <exclude reference="LLs-X6-9ro"/>
-                                        <exclude reference="MbV-Wv-g5a"/>
-                                        <exclude reference="ld0-JE-LnV"/>
-                                        <exclude reference="o5Y-S7-TvG"/>
-                                        <exclude reference="oKr-HT-bj8"/>
-                                        <exclude reference="wnF-PB-kBS"/>
                                         <exclude reference="1qA-jB-VIH"/>
                                         <exclude reference="45n-Ce-7tr"/>
                                         <exclude reference="4me-LV-Y3d"/>
@@ -263,6 +255,14 @@
                                         <exclude reference="kyy-nH-s4g"/>
                                         <exclude reference="mew-cn-frd"/>
                                         <exclude reference="udB-98-6jE"/>
+                                        <exclude reference="8Rp-M0-JL6"/>
+                                        <exclude reference="Gb3-ec-wno"/>
+                                        <exclude reference="LLs-X6-9ro"/>
+                                        <exclude reference="MbV-Wv-g5a"/>
+                                        <exclude reference="ld0-JE-LnV"/>
+                                        <exclude reference="o5Y-S7-TvG"/>
+                                        <exclude reference="oKr-HT-bj8"/>
+                                        <exclude reference="wnF-PB-kBS"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -289,16 +289,16 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="Nwt-8g-ouV"/>
-                                        <include reference="8Rp-M0-JL6"/>
-                                        <include reference="Gb3-ec-wno"/>
-                                        <include reference="LLs-X6-9ro"/>
-                                        <include reference="o5Y-S7-TvG"/>
                                         <include reference="45n-Ce-7tr"/>
                                         <exclude reference="4me-LV-Y3d"/>
                                         <exclude reference="QBr-jk-BW7"/>
                                         <exclude reference="kyy-nH-s4g"/>
                                         <include reference="mew-cn-frd"/>
                                         <exclude reference="udB-98-6jE"/>
+                                        <include reference="8Rp-M0-JL6"/>
+                                        <include reference="Gb3-ec-wno"/>
+                                        <include reference="LLs-X6-9ro"/>
+                                        <include reference="o5Y-S7-TvG"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -584,6 +584,10 @@
                                     <mask key="constraints">
                                         <exclude reference="4H7-3n-H6T"/>
                                         <exclude reference="S5I-m2-bQm"/>
+                                        <exclude reference="0se-NY-tqg"/>
+                                        <exclude reference="JC8-hL-cFM"/>
+                                        <exclude reference="uFo-vO-CK3"/>
+                                        <exclude reference="xwE-ld-c0A"/>
                                         <exclude reference="2jH-ud-06c"/>
                                         <exclude reference="4Ei-ry-JD7"/>
                                         <exclude reference="DB2-7R-pLZ"/>
@@ -592,10 +596,6 @@
                                         <exclude reference="nkE-Cn-FZ3"/>
                                         <exclude reference="x0u-UK-RLO"/>
                                         <exclude reference="zgA-B3-13L"/>
-                                        <exclude reference="0se-NY-tqg"/>
-                                        <exclude reference="JC8-hL-cFM"/>
-                                        <exclude reference="uFo-vO-CK3"/>
-                                        <exclude reference="xwE-ld-c0A"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -622,12 +622,12 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="S5I-m2-bQm"/>
+                                        <include reference="JC8-hL-cFM"/>
+                                        <include reference="xwE-ld-c0A"/>
                                         <include reference="2jH-ud-06c"/>
                                         <include reference="4Ei-ry-JD7"/>
                                         <include reference="DB2-7R-pLZ"/>
                                         <include reference="zgA-B3-13L"/>
-                                        <include reference="JC8-hL-cFM"/>
-                                        <include reference="xwE-ld-c0A"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -858,7 +858,8 @@
                                         <include reference="mtx-4A-Ly9"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="360" y="8" width="80" height="36"/>
                                     <mask key="subviews">
                                         <include reference="rZn-Oe-Qau"/>
                                         <include reference="SA5-Xf-qGA"/>
@@ -876,10 +877,10 @@
                                 </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" alignment="center" spacing="-90" translatesAutoresizingMaskIntoConstraints="NO" id="had-Hd-KBj" userLabel="playerCards">
-                                <rect key="frame" x="135" y="315" width="910" height="726"/>
+                                <rect key="frame" x="135" y="315" width="476" height="411"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="Gag-O8-DoA" userLabel="playerCard1" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="500" height="726"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="283" height="411"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="W51-Ry-5HJ"/>
                                             <constraint firstAttribute="width" secondItem="Gag-O8-DoA" secondAttribute="height" multiplier="157:213" id="eXV-zt-7yy"/>
@@ -905,7 +906,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="LVk-gU-eYf" userLabel="playerCard2" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="410" y="158" width="500" height="411"/>
+                                        <rect key="frame" x="193" y="0.0" width="283" height="411"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="284" id="2Qf-Qh-ddr"/>
                                             <constraint firstAttribute="height" constant="390" id="2ke-Kx-Odj"/>
@@ -931,7 +932,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pJ-t1-qpx" userLabel="playerCard3" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="62I-on-qyv"/>
                                             <constraint firstAttribute="width" constant="284" id="Hhj-34-paM"/>
@@ -957,7 +958,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSx-c7-qk3" userLabel="playerCard4" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="SSx-c7-qk3" secondAttribute="height" multiplier="157:213" id="Afi-Wt-zCU"/>
                                             <constraint firstAttribute="width" constant="284" id="POU-qY-1zN"/>
@@ -983,7 +984,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDB-Rb-XKo" userLabel="playerCard5" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="tDB-Rb-XKo" secondAttribute="height" multiplier="157:213" id="Qz8-rQ-IVl"/>
                                             <constraint firstAttribute="height" constant="390" id="XXg-gy-RDw"/>
@@ -1009,7 +1010,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nub-a1-mRk" userLabel="playerCard6" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="284" id="DKO-qC-HaG"/>
                                             <constraint firstAttribute="height" constant="390" id="I8l-bJ-JiM"/>
@@ -1035,7 +1036,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWc-nH-Hep" userLabel="playerCard7" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="Ot3-cA-rSZ"/>
                                             <constraint firstAttribute="width" secondItem="xWc-nH-Hep" secondAttribute="height" multiplier="157:213" id="YTv-pf-iYf"/>
@@ -1061,7 +1062,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q97-So-ROP" userLabel="playerCard8" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="B17-63-jbI"/>
                                             <constraint firstAttribute="width" constant="284" id="Q4U-JD-o6R"/>
@@ -1087,7 +1088,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6HF-Fb-4T3" userLabel="playerCard9" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6HF-Fb-4T3" secondAttribute="height" multiplier="157:213" id="5fG-qm-htZ"/>
                                             <constraint firstAttribute="width" constant="284" id="b7n-At-Yue"/>
@@ -1113,7 +1114,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PlU-rh-f12" userLabel="playerCard10" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="PlU-rh-f12" secondAttribute="height" multiplier="157:213" id="Wb1-bb-YZ1"/>
                                             <constraint firstAttribute="width" constant="284" id="ZUW-np-TmD"/>
@@ -1139,7 +1140,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1L-za-rcd" userLabel="playerCard11" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="MSf-Vp-C3r"/>
                                             <constraint firstAttribute="width" secondItem="m1L-za-rcd" secondAttribute="height" multiplier="157:213" id="Tax-is-xji"/>
@@ -1165,7 +1166,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRh-qm-9za" userLabel="playerCard12" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="865" y="257" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="2pX-NN-dhT"/>
                                             <constraint firstAttribute="width" secondItem="rRh-qm-9za" secondAttribute="height" multiplier="157:213" id="op4-1A-5ik"/>
@@ -1195,10 +1196,10 @@
                                 <variation key="heightClass=regular-widthClass=regular" axis="horizontal" distribution="fillEqually" spacing="-150"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" alignment="center" spacing="-90" translatesAutoresizingMaskIntoConstraints="NO" id="Gh3-bC-NvB" userLabel="dealerCards">
-                                <rect key="frame" x="102" y="32" width="510" height="435"/>
+                                <rect key="frame" x="102" y="32" width="476" height="411"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="qM3-NK-IgL" userLabel="dealerCard1" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="435"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="qM3-NK-IgL" userLabel="dealerCard1" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="283" height="411"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="5OB-6D-rVD"/>
                                             <constraint firstAttribute="width" constant="284" id="rRg-ac-H1o"/>
@@ -1223,8 +1224,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="Iba-Ql-cah" userLabel="dealerCard2" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="210" y="0.0" width="300" height="435"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="cardback" translatesAutoresizingMaskIntoConstraints="NO" id="Iba-Ql-cah" userLabel="dealerCard2" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
+                                        <rect key="frame" x="193" y="0.0" width="283" height="411"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="284" id="AIK-Wg-fU8"/>
                                             <constraint firstAttribute="width" secondItem="Iba-Ql-cah" secondAttribute="height" multiplier="157:213" id="pRY-LW-1Wl"/>
@@ -1250,7 +1251,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5hF-V5-USb" userLabel="dealerCard3" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5hF-V5-USb" secondAttribute="height" multiplier="157:213" id="VgG-MW-jwX"/>
                                             <constraint firstAttribute="width" constant="284" id="iKv-Ny-wlk"/>
@@ -1276,7 +1277,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OTf-Ib-UPt" userLabel="dealerCard4" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="OTf-Ib-UPt" secondAttribute="height" multiplier="157:213" id="6nK-P9-meZ"/>
                                             <constraint firstAttribute="width" constant="284" id="7k0-Tu-8WG"/>
@@ -1302,7 +1303,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wju-22-yhR" userLabel="dealerCard5" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="284" id="5Xk-hV-n3m"/>
                                             <constraint firstAttribute="height" constant="390" id="nqg-bX-p0A"/>
@@ -1328,7 +1329,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8yR-eZ-d0G" userLabel="dealerCard6" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8yR-eZ-d0G" secondAttribute="height" multiplier="157:213" id="ZUm-LB-g62"/>
                                             <constraint firstAttribute="height" constant="390" id="nYi-75-hKt"/>
@@ -1354,7 +1355,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LHI-vT-vwz" userLabel="dealerCard7" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="c9n-nq-CwN"/>
                                             <constraint firstAttribute="width" constant="284" id="gKW-tc-dxU"/>
@@ -1380,7 +1381,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eSg-Yg-YiQ" userLabel="dealerCard8" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="cT3-Fw-KhW"/>
                                             <constraint firstAttribute="width" constant="284" id="dAo-jy-MR9"/>
@@ -1406,7 +1407,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pqg-0Z-d39" userLabel="dealerCard9" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Pqg-0Z-d39" secondAttribute="height" multiplier="157:213" id="Vn6-zW-Qai"/>
                                             <constraint firstAttribute="height" constant="390" id="YMj-B8-3aU"/>
@@ -1432,7 +1433,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jks-bS-mvp" userLabel="dealerCard10" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="390" id="5s0-6I-EpL"/>
                                             <constraint firstAttribute="width" secondItem="Jks-bS-mvp" secondAttribute="height" multiplier="157:213" id="faW-du-H4x"/>
@@ -1458,7 +1459,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LhG-BD-HIO" userLabel="dealerCard11" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="284" id="HuR-SL-eHR"/>
                                             <constraint firstAttribute="width" secondItem="LhG-BD-HIO" secondAttribute="height" multiplier="157:213" id="fwU-ie-Wcz"/>
@@ -1484,7 +1485,7 @@
                                         </variation>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-d5-xwg" userLabel="dealerCard12" customClass="CardFlipAnimation" customModule="Blackjack" customModuleProvider="target">
-                                        <rect key="frame" x="465" y="111" width="0.0" height="213"/>
+                                        <rect key="frame" x="431" y="99" width="0.0" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="284" id="00A-CK-MDp"/>
                                             <constraint firstAttribute="width" secondItem="RiF-d5-xwg" secondAttribute="height" multiplier="157:213" id="3rF-gg-hhV"/>
@@ -1511,7 +1512,9 @@
                                     </imageView>
                                 </subviews>
                                 <variation key="heightClass=regular-widthClass=compact" axis="horizontal"/>
-                                <variation key="heightClass=regular-widthClass=regular" spacing="-150"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES" spacing="-150">
+                                    <rect key="frame" x="191" y="52" width="418" height="240"/>
+                                </variation>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSt-2j-Otv" userLabel="MessageView">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -1534,8 +1537,9 @@
                                                 <include reference="7DO-2A-TlB"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                                            <rect key="frame" x="327.5" y="6" width="145" height="41"/>
                                         </variation>
                                     </label>
                                 </subviews>
@@ -1565,7 +1569,8 @@
                                         <include reference="o3J-K7-LDC"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="293" width="800" height="53"/>
                                     <mask key="subviews">
                                         <include reference="hQ3-SH-UAd"/>
                                     </mask>
@@ -1595,36 +1600,36 @@
                             <constraint firstAttribute="trailing" secondItem="rUv-Ik-p3U" secondAttribute="trailing" id="ClY-48-KwN"/>
                             <constraint firstItem="DSt-2j-Otv" firstAttribute="top" secondItem="Gh3-bC-NvB" secondAttribute="bottom" constant="1" id="DVX-jS-6Ym"/>
                             <constraint firstItem="Gh3-bC-NvB" firstAttribute="height" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="height" multiplier="0.3" id="EDD-LU-Klp"/>
-                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="Hy5-eN-uH4" secondAttribute="bottom" id="EKb-iH-3kA"/>
                             <constraint firstItem="DSt-2j-Otv" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="GYQ-It-AYg"/>
                             <constraint firstItem="had-Hd-KBj" firstAttribute="width" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="width" id="GuE-y6-2Wt"/>
                             <constraint firstItem="r5L-YV-J5a" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="top" id="IDx-NP-MZZ"/>
                             <constraint firstItem="rUv-Ik-p3U" firstAttribute="top" secondItem="DSt-2j-Otv" secondAttribute="bottom" id="J6J-8q-7N0"/>
+                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="r5L-YV-J5a" secondAttribute="bottom" id="KnL-rC-Fix"/>
                             <constraint firstItem="sbU-25-DLJ" firstAttribute="top" secondItem="had-Hd-KBj" secondAttribute="bottom" constant="8" id="LpJ-8X-wTs"/>
+                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="Hy5-eN-uH4" secondAttribute="bottom" id="Lpi-G3-Hu7"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="topMargin" constant="8" id="Mua-e0-AtC"/>
                             <constraint firstAttribute="trailing" secondItem="DSt-2j-Otv" secondAttribute="trailing" id="Nhh-62-vPm"/>
                             <constraint firstItem="had-Hd-KBj" firstAttribute="height" secondItem="Phd-8t-bo4" secondAttribute="height" multiplier="0.5" id="OtP-Nd-ESb"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="PNL-pE-n7S"/>
                             <constraint firstItem="had-Hd-KBj" firstAttribute="height" secondItem="Phd-8t-bo4" secondAttribute="height" multiplier="0.3" id="Q5X-GK-Q22"/>
-                            <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="jP6-ua-fYP" secondAttribute="bottom" id="QLu-MZ-3VH"/>
                             <constraint firstItem="had-Hd-KBj" firstAttribute="centerY" secondItem="Phd-8t-bo4" secondAttribute="centerY" id="S8e-hS-qN7"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="top" constant="8" id="SGY-ud-JBJ"/>
+                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="r5L-YV-J5a" secondAttribute="bottom" id="TeS-TM-klz"/>
                             <constraint firstItem="Hy5-eN-uH4" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="Tfw-FV-pCU"/>
                             <constraint firstItem="Hy5-eN-uH4" firstAttribute="top" secondItem="rUv-Ik-p3U" secondAttribute="bottom" constant="1" id="V8v-rp-Eb6"/>
                             <constraint firstItem="Gh3-bC-NvB" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="VMj-mu-YEa"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="WnC-gM-fgQ"/>
+                            <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="jP6-ua-fYP" secondAttribute="bottom" id="X0w-QP-ThE"/>
                             <constraint firstItem="had-Hd-KBj" firstAttribute="width" relation="lessThanOrEqual" secondItem="Phd-8t-bo4" secondAttribute="width" id="Y8O-An-NEx"/>
                             <constraint firstItem="r5L-YV-J5a" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="top" id="Ycl-DZ-xUi"/>
                             <constraint firstItem="had-Hd-KBj" firstAttribute="centerX" secondItem="Phd-8t-bo4" secondAttribute="centerX" id="ZbK-HL-dEl"/>
-                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="r5L-YV-J5a" secondAttribute="bottom" id="c3u-xC-5UL"/>
+                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="Hy5-eN-uH4" secondAttribute="bottom" id="amK-4g-AGU"/>
                             <constraint firstItem="Gh3-bC-NvB" firstAttribute="top" secondItem="Ksu-Ru-SiD" secondAttribute="bottom" constant="8" id="cC9-5A-YjX"/>
                             <constraint firstItem="Hy5-eN-uH4" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="ckF-oc-167"/>
                             <constraint firstAttribute="trailing" secondItem="DSt-2j-Otv" secondAttribute="trailing" id="d8p-ZA-3T2"/>
                             <constraint firstItem="Ksu-Ru-SiD" firstAttribute="top" secondItem="Phd-8t-bo4" secondAttribute="top" constant="4" id="drq-J0-hE5"/>
-                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="r5L-YV-J5a" secondAttribute="bottom" id="eBS-4n-1hs"/>
                             <constraint firstAttribute="trailing" secondItem="Hy5-eN-uH4" secondAttribute="trailing" id="fw5-X2-adT"/>
                             <constraint firstItem="DSt-2j-Otv" firstAttribute="leading" secondItem="Phd-8t-bo4" secondAttribute="leading" id="gJV-lr-1Sb"/>
-                            <constraint firstItem="rM7-fb-CNe" firstAttribute="top" secondItem="Hy5-eN-uH4" secondAttribute="bottom" id="gnL-54-Imi"/>
                             <constraint firstItem="Gh3-bC-NvB" firstAttribute="top" secondItem="Ksu-Ru-SiD" secondAttribute="bottom" constant="8" id="ia4-UU-khW"/>
                             <constraint firstAttribute="trailing" secondItem="r5L-YV-J5a" secondAttribute="trailing" id="jBV-j7-9ay"/>
                             <constraint firstAttribute="trailing" secondItem="r5L-YV-J5a" secondAttribute="trailing" id="jsB-cs-6lj"/>
@@ -1658,42 +1663,6 @@
                                 <exclude reference="DSt-2j-Otv"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ARC-r8-FM0"/>
-                                <exclude reference="AoQ-Ud-sje"/>
-                                <exclude reference="ClY-48-KwN"/>
-                                <exclude reference="J6J-8q-7N0"/>
-                                <exclude reference="pUt-Lo-H72"/>
-                                <exclude reference="pdq-Ag-31B"/>
-                                <exclude reference="wm7-Jh-QRa"/>
-                                <exclude reference="BkU-eC-Znw"/>
-                                <exclude reference="CW7-Nx-mhD"/>
-                                <exclude reference="Tfw-FV-pCU"/>
-                                <exclude reference="V8v-rp-Eb6"/>
-                                <exclude reference="ckF-oc-167"/>
-                                <exclude reference="fw5-X2-adT"/>
-                                <exclude reference="BLT-iY-1gr"/>
-                                <exclude reference="DVX-jS-6Ym"/>
-                                <exclude reference="GYQ-It-AYg"/>
-                                <exclude reference="Nhh-62-vPm"/>
-                                <exclude reference="d8p-ZA-3T2"/>
-                                <exclude reference="gJV-lr-1Sb"/>
-                                <exclude reference="l2m-N9-Uxx"/>
-                                <exclude reference="rHB-n8-obL"/>
-                                <exclude reference="tmJ-rD-DzK"/>
-                                <exclude reference="3fm-cb-Yw1"/>
-                                <exclude reference="Mua-e0-AtC"/>
-                                <exclude reference="PNL-pE-n7S"/>
-                                <exclude reference="QLu-MZ-3VH"/>
-                                <exclude reference="SGY-ud-JBJ"/>
-                                <exclude reference="WnC-gM-fgQ"/>
-                                <exclude reference="drq-J0-hE5"/>
-                                <exclude reference="tir-Jm-Jg3"/>
-                                <exclude reference="11Q-4r-Qfv"/>
-                                <exclude reference="2ld-Jh-nbX"/>
-                                <exclude reference="LpJ-8X-wTs"/>
-                                <exclude reference="ozu-kN-NOd"/>
-                                <exclude reference="rIy-Tu-bZJ"/>
-                                <exclude reference="wbf-FE-DI9"/>
                                 <exclude reference="CdA-YN-BEj"/>
                                 <exclude reference="IDx-NP-MZZ"/>
                                 <exclude reference="Ycl-DZ-xUi"/>
@@ -1708,6 +1677,22 @@
                                 <exclude reference="ia4-UU-khW"/>
                                 <exclude reference="lAE-nr-qNO"/>
                                 <exclude reference="u7E-nM-CMF"/>
+                                <exclude reference="BLT-iY-1gr"/>
+                                <exclude reference="DVX-jS-6Ym"/>
+                                <exclude reference="GYQ-It-AYg"/>
+                                <exclude reference="Nhh-62-vPm"/>
+                                <exclude reference="d8p-ZA-3T2"/>
+                                <exclude reference="gJV-lr-1Sb"/>
+                                <exclude reference="l2m-N9-Uxx"/>
+                                <exclude reference="rHB-n8-obL"/>
+                                <exclude reference="tmJ-rD-DzK"/>
+                                <exclude reference="3fm-cb-Yw1"/>
+                                <exclude reference="Mua-e0-AtC"/>
+                                <exclude reference="PNL-pE-n7S"/>
+                                <exclude reference="SGY-ud-JBJ"/>
+                                <exclude reference="WnC-gM-fgQ"/>
+                                <exclude reference="drq-J0-hE5"/>
+                                <exclude reference="tir-Jm-Jg3"/>
                                 <exclude reference="2ay-Gp-vcG"/>
                                 <exclude reference="5I4-ys-nAb"/>
                                 <exclude reference="AtM-uC-dHl"/>
@@ -1722,10 +1707,25 @@
                                 <exclude reference="wfU-SF-gHb"/>
                                 <exclude reference="yEh-eu-4zG"/>
                                 <exclude reference="z2F-kE-dYi"/>
-                                <exclude reference="EKb-iH-3kA"/>
-                                <exclude reference="c3u-xC-5UL"/>
-                                <exclude reference="eBS-4n-1hs"/>
-                                <exclude reference="gnL-54-Imi"/>
+                                <exclude reference="ARC-r8-FM0"/>
+                                <exclude reference="AoQ-Ud-sje"/>
+                                <exclude reference="ClY-48-KwN"/>
+                                <exclude reference="J6J-8q-7N0"/>
+                                <exclude reference="pUt-Lo-H72"/>
+                                <exclude reference="pdq-Ag-31B"/>
+                                <exclude reference="wm7-Jh-QRa"/>
+                                <exclude reference="11Q-4r-Qfv"/>
+                                <exclude reference="2ld-Jh-nbX"/>
+                                <exclude reference="LpJ-8X-wTs"/>
+                                <exclude reference="ozu-kN-NOd"/>
+                                <exclude reference="rIy-Tu-bZJ"/>
+                                <exclude reference="wbf-FE-DI9"/>
+                                <exclude reference="BkU-eC-Znw"/>
+                                <exclude reference="CW7-Nx-mhD"/>
+                                <exclude reference="Tfw-FV-pCU"/>
+                                <exclude reference="V8v-rp-Eb6"/>
+                                <exclude reference="ckF-oc-167"/>
+                                <exclude reference="fw5-X2-adT"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1737,27 +1737,28 @@
                                 <include reference="DSt-2j-Otv"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Ycl-DZ-xUi"/>
+                                <include reference="jsB-cs-6lj"/>
+                                <include reference="pP9-sg-pY8"/>
+                                <include reference="gJV-lr-1Sb"/>
+                                <include reference="tmJ-rD-DzK"/>
+                                <include reference="3fm-cb-Yw1"/>
                                 <include reference="ARC-r8-FM0"/>
                                 <include reference="J6J-8q-7N0"/>
                                 <include reference="pUt-Lo-H72"/>
                                 <include reference="wm7-Jh-QRa"/>
+                                <include reference="11Q-4r-Qfv"/>
                                 <include reference="BkU-eC-Znw"/>
                                 <include reference="V8v-rp-Eb6"/>
                                 <include reference="ckF-oc-167"/>
-                                <include reference="gJV-lr-1Sb"/>
-                                <include reference="tmJ-rD-DzK"/>
-                                <include reference="3fm-cb-Yw1"/>
-                                <include reference="11Q-4r-Qfv"/>
-                                <include reference="Ycl-DZ-xUi"/>
-                                <include reference="jsB-cs-6lj"/>
-                                <include reference="pP9-sg-pY8"/>
-                                <include reference="c3u-xC-5UL"/>
-                                <include reference="gnL-54-Imi"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <exclude reference="J6J-8q-7N0"/>
+                                <include reference="23Z-kM-dIz"/>
+                                <include reference="VMj-mu-YEa"/>
+                                <include reference="cC9-5A-YjX"/>
+                                <include reference="lAE-nr-qNO"/>
                                 <include reference="BLT-iY-1gr"/>
                                 <include reference="d8p-ZA-3T2"/>
                                 <exclude reference="gJV-lr-1Sb"/>
@@ -1766,18 +1767,14 @@
                                 <exclude reference="tmJ-rD-DzK"/>
                                 <exclude reference="3fm-cb-Yw1"/>
                                 <exclude reference="Mua-e0-AtC"/>
-                                <exclude reference="QLu-MZ-3VH"/>
                                 <include reference="WnC-gM-fgQ"/>
                                 <include reference="drq-J0-hE5"/>
                                 <exclude reference="tir-Jm-Jg3"/>
-                                <include reference="LpJ-8X-wTs"/>
-                                <include reference="23Z-kM-dIz"/>
-                                <include reference="VMj-mu-YEa"/>
-                                <include reference="cC9-5A-YjX"/>
-                                <include reference="lAE-nr-qNO"/>
                                 <include reference="GuE-y6-2Wt"/>
                                 <include reference="Q5X-GK-Q22"/>
                                 <include reference="z2F-kE-dYi"/>
+                                <exclude reference="J6J-8q-7N0"/>
+                                <include reference="LpJ-8X-wTs"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -1792,21 +1789,6 @@
                                 <include reference="DSt-2j-Otv"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="AoQ-Ud-sje"/>
-                                <include reference="ClY-48-KwN"/>
-                                <include reference="pdq-Ag-31B"/>
-                                <include reference="CW7-Nx-mhD"/>
-                                <include reference="Tfw-FV-pCU"/>
-                                <include reference="fw5-X2-adT"/>
-                                <include reference="DVX-jS-6Ym"/>
-                                <include reference="GYQ-It-AYg"/>
-                                <include reference="Nhh-62-vPm"/>
-                                <include reference="PNL-pE-n7S"/>
-                                <include reference="SGY-ud-JBJ"/>
-                                <exclude reference="2ld-Jh-nbX"/>
-                                <exclude reference="ozu-kN-NOd"/>
-                                <include reference="rIy-Tu-bZJ"/>
-                                <include reference="wbf-FE-DI9"/>
                                 <include reference="CdA-YN-BEj"/>
                                 <include reference="IDx-NP-MZZ"/>
                                 <include reference="jBV-j7-9ay"/>
@@ -1814,6 +1796,11 @@
                                 <include reference="EDD-LU-Klp"/>
                                 <include reference="ia4-UU-khW"/>
                                 <include reference="u7E-nM-CMF"/>
+                                <include reference="DVX-jS-6Ym"/>
+                                <include reference="GYQ-It-AYg"/>
+                                <include reference="Nhh-62-vPm"/>
+                                <include reference="PNL-pE-n7S"/>
+                                <include reference="SGY-ud-JBJ"/>
                                 <exclude reference="2ay-Gp-vcG"/>
                                 <include reference="5I4-ys-nAb"/>
                                 <exclude reference="AtM-uC-dHl"/>
@@ -1825,8 +1812,16 @@
                                 <include reference="u88-P2-TYH"/>
                                 <exclude reference="wfU-SF-gHb"/>
                                 <include reference="yEh-eu-4zG"/>
-                                <include reference="EKb-iH-3kA"/>
-                                <include reference="eBS-4n-1hs"/>
+                                <include reference="AoQ-Ud-sje"/>
+                                <include reference="ClY-48-KwN"/>
+                                <include reference="pdq-Ag-31B"/>
+                                <exclude reference="2ld-Jh-nbX"/>
+                                <exclude reference="ozu-kN-NOd"/>
+                                <include reference="rIy-Tu-bZJ"/>
+                                <include reference="wbf-FE-DI9"/>
+                                <include reference="CW7-Nx-mhD"/>
+                                <include reference="Tfw-FV-pCU"/>
+                                <include reference="fw5-X2-adT"/>
                             </mask>
                         </variation>
                     </view>

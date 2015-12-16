@@ -144,6 +144,20 @@ class GameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
+        if let savedBalance = NSUserDefaults.standardUserDefaults().valueForKey("balance") as? Int {
+            playerBalance = savedBalance
+        }
+        
+        if let savedBet = NSUserDefaults.standardUserDefaults().valueForKey("bet") as? Int {
+            currentBet = savedBet
+        }
+        
+        if let allCards = NSUserDefaults.standardUserDefaults().valueForKey("allCards") as? Array<CardFlipAnimation> {
+            cardback = allCards
+        }*/
+        
+        
         self.canDisplayBannerAds = false
         
         gameInit()
@@ -174,6 +188,7 @@ class GameController: UIViewController {
         }*/
 
     }
+    
     
     
     //BUTTON IBACTIONS
@@ -484,16 +499,10 @@ class GameController: UIViewController {
         } else {
             playerBalance -= desiredAmount
             currentBet += desiredAmount
-            
-            //balanceLabel.textColor = darkRed
-            //betAmountLabel.textColor = darkGreen
-
+            //saveData()
             labelsChangeColor()
 
         }
-        
-        //newTimer?.invalidate()
-        //timer?.invalidate()
         
         updateLabels()
     }
@@ -576,6 +585,35 @@ class GameController: UIViewController {
     }
     
     
+    
+    /*func saveData() {
+        //Balance and Bet
+        NSUserDefaults.standardUserDefaults().setInteger(playerBalance, forKey: "balance")
+        NSUserDefaults.standardUserDefaults().setInteger(currentBet, forKey: "bet")
+        
+        //Hand Labels
+        NSUserDefaults.standardUserDefaults().setInteger(playerHandValue, forKey: "playerHandValue")
+        NSUserDefaults.standardUserDefaults().setInteger(dealerHandValue, forKey: "dealerHandValue")
+        
+        //Cards
+        
+        NSUserDefaults.standardUserDefaults().setObject(cardback, forKey: "allCards")
+        
+        /*
+        for var x = 0; x <= 11; x++ {
+            NSUserDefaults.standardUserDefaults().setObject(cardback[x], forKey: "playerCard\(x)")
+            print("playerCard\(x)")
+        }
+        
+        for var x = 12; x <= 23; x++ {
+            NSUserDefaults.standardUserDefaults().setObject(cardback[x], forKey: "dealerCard\(x)")
+            print("dealerCard\(x)")
+        }*/
+        
+        
+        //Synchronize the Saved Data
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }*/
     
     func labelsChangeColor() {
         UIView.transitionWithView(self.balanceLabel, duration: 0.1, options: .TransitionCrossDissolve, animations: { self.balanceLabel.textColor = self.darkRed }, completion: nil)
@@ -1312,6 +1350,8 @@ class GameController: UIViewController {
         }
         
         balanceLabel.userInteractionEnabled = true
+        //saveData()
+        updateLabels()
         
     }
 
