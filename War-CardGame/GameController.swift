@@ -6,12 +6,22 @@ import iAd
 
 class GameController: UIViewController {
     
+    //Nav Menu
+    var navOpen: Bool = false
+    
+    
     // Colors
     
     var darkRed = UIColor(red: 155/255, green: 6/255, blue: 0/255, alpha: 1.0)
     var darkGreen = UIColor(red: 19/255, green: 150/255, blue: 13/255, alpha: 1.0)
     var grayTextColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0)
  
+    
+    //More Money Timer
+    var moneyTimer: NSTimer?
+    let staticTime: Int = 5
+    var secondsLeft: Int! //CHANGE BACK TO 3600
+    
     
     //Bet Increment Timers
     
@@ -53,13 +63,15 @@ class GameController: UIViewController {
     var playerBust = false
     var roundIsOver = false
     var cardsOnScreen = false
-    var replenishAmount: Int!
+    var replenishAmount: Int?
     
     //Sound Effects
     
     var sfxCardShuffle: AVAudioPlayer!
     var sfxDeal: AVAudioPlayer!
     var sfxDealTwo: AVAudioPlayer!
+    
+    var volumeOn: Bool = true
     
     //Card Flip Animation
     
@@ -69,6 +81,36 @@ class GameController: UIViewController {
     //Card Array
     
     var cardback = [CardFlipAnimation]()
+    
+    
+    
+    
+    
+    
+    //TESTING
+    
+    
+    
+    
+    
+    
+    
+    //Navigation Labels
+    
+    @IBOutlet weak var menuButtonLabel: UIButton!
+    @IBOutlet weak var innerMenuButtonLabel: UIButton!
+    @IBOutlet weak var navMenuLabel: UIView!
+    
+    @IBOutlet weak var soundToggleLabel: UIButton!
+    @IBOutlet weak var addMoneyToggleLabel: UIButton!
+    @IBOutlet weak var moneyTextFieldLabel: UITextField!
+    
+    
+    //More Money Timer
+    
+    @IBOutlet weak var moneyTimerLabel: UILabel!
+    @IBOutlet weak var moreMoneyButton: UIButton!
+    
     
     
     
@@ -171,6 +213,9 @@ class GameController: UIViewController {
         updateLabels()
         addCardsToArray()
         initBetAll()
+        moneyTimerInit()
+        moreMoneyButton.enabled = false
+        moreMoneyButton.alpha = 0.3
         
         //Prepare for animations
         cardsInitialState()
@@ -179,6 +224,9 @@ class GameController: UIViewController {
         //Hide the message display
         gameMessageLabel.alpha = 0.0
         gameMessageLabel.text = ""
+        
+        //Hide The Nav Menu
+        navMenuLabel.hidden = true
 
         
         
@@ -284,7 +332,8 @@ class GameController: UIViewController {
         
         if currentBet <= 0 && playerBalance <= 0 {
             initialButtonState()
-            return addMoney()
+            //return addMoney()
+            return showGameMessage("You're out of money! Add some more.")
         }
         
         if cardsOnScreen == true {
@@ -342,12 +391,109 @@ class GameController: UIViewController {
     }
     
     @IBAction func clearButtonPressed(sender: UIButton) {
-        //For testing purposes, delete the slide animation
         clearButtonLabel.fadeIn()
         playerBalance += currentBet
         currentBet -= currentBet
         updateLabels()
         
+    }
+    
+    
+    
+    
+    
+    //Navigation
+    
+    @IBAction func menuButtonPressed(sender: AnyObject) {
+        menuSlideOut()
+    }
+    
+    @IBAction func innerMenuButtonPressed(sender: UIButton) {
+        menuSlideIn()
+        
+    }
+    
+    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
+        
+        if !navOpen {
+            menuSlideOut()
+        }
+        
+    }
+
+    @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
+        
+        if navOpen {
+            menuSlideIn()
+        }
+        
+    }
+    
+    @IBAction func soundTogglePressed(sender: UIButton) {
+        soundToggle()
+        
+    }
+    
+    @IBAction func addMoneyPressed(sender: UIButton) {
+        
+        moneyTextFieldLabel.endEditing(true)
+        
+        replenishAmount = Int(moneyTextFieldLabel.text!)
+        
+        if playerBalance <= 0 && currentBet <= 0 {
+            
+            if replenishAmount != nil {
+                if replenishAmount > 0 && replenishAmount <= 1000 {
+                    playerBalance += replenishAmount!
+                    updateLabels()
+                    showGameMessage("Awesome! Let's keep playing!")
+                } else {
+                    showGameMessage("Please enter a max of $1000")
+                }
+            } else {
+                showGameMessage("That is not a valid number!")
+            }
+            
+        } else {
+            showGameMessage("You still have money!")
+        }
+        
+    }
+    
+    @IBAction func moreMoneyButtonPressed(sender: UIButton) {
+        moreMoneyButton.fadeIn()
+        moreMoneyButton.enabled = false
+        moreMoneyButton.alpha = 0.3
+        playerBalance += 2000
+        
+        moneyTimerInit()
+        
+        updateLabels()
+        
+    }
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Navigation Functions
+    
+    func menuSlideOut() {
+        navOpen = true
+        navMenuLabel.hidden = false
+        navMenuLabel.slideFromLeft()
+    }
+    
+    func menuSlideIn() {
+        navOpen = false
+        navMenuLabel.hidden = true
+        navMenuLabel.slideFromRight()
     }
     
  
@@ -493,6 +639,24 @@ class GameController: UIViewController {
     
     func playShuffle() {
         sfxCardShuffle.play()
+    }
+    
+    func soundToggle() {
+        if volumeOn == true {
+            soundToggleLabel.setTitleColor(darkRed, forState: UIControlState.Normal)
+            soundToggleLabel.setTitle("Sound: Off", forState: UIControlState.Normal)
+            volumeOn = false
+            sfxCardShuffle.volume = 0
+            sfxDeal.volume = 0
+            sfxDealTwo.volume = 0
+        } else {
+            soundToggleLabel.setTitle("Sound: On", forState: UIControlState.Normal)
+            soundToggleLabel.setTitleColor(darkGreen, forState: UIControlState.Normal)
+            volumeOn = true
+            sfxCardShuffle.volume = 1.0
+            sfxDealTwo.volume = 0.3
+            sfxDeal.volume = 0.3
+        }
     }
     
     
@@ -1133,7 +1297,7 @@ class GameController: UIViewController {
     
     // Add more money
     
-    func addMoney() {        
+    func addMoney() {
         let alertController = UIAlertController(title: "You're out of money!", message:
             "It looks like you're out of money! Luckily, you get to replenish your chips for free! I don't believe in microtransactions that hinder gameplay, and I want you to keep on Blackjackin' it up! Please consider, however, leaving a review in the App Store, as I am an independent developer and every critique helps! Thanks, and have fun!", preferredStyle: UIAlertControllerStyle.Alert)
 
@@ -1178,6 +1342,33 @@ class GameController: UIViewController {
         
         self.presentViewController(alertController, animated: true, completion: nil)
         
+    }
+    
+    func moneyTimerInit() {
+        secondsLeft = staticTime
+        moneyTimerLabel.text = convert(secondsLeft)
+        moneyTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "moreMoneyTimer", userInfo: nil, repeats: true)
+    }
+    
+    func moreMoneyTimer() {
+        secondsLeft = secondsLeft - 1
+        
+        if secondsLeft <= 0 {
+            moneyTimer?.invalidate()
+            moneyTimerLabel.text = convert(secondsLeft)
+            moreMoneyButton.enabled = true
+            moreMoneyButton.alpha = 1.0
+        }
+        
+        moneyTimerLabel.text = convert(secondsLeft)
+    }
+    
+    func convert(secs: Int) -> String {
+        let hours = String(format: "%02d", (secs/3600))
+        let minutes = String(format: "%02d", (secs % 3600) / 60)
+        let seconds = String(format: "%02d", (secs % 3600) % 60)
+        
+        return "\(hours):\(minutes):\(seconds)"
     }
     
     
@@ -1290,7 +1481,8 @@ class GameController: UIViewController {
             currentBet -= currentBet
             updateLabels()
             if playerBalance <= 0 {
-                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "addMoney", userInfo: nil, repeats: false)
+                showGameMessage("You're out of money! Add some more.")
+                //NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "addMoney", userInfo: nil, repeats: false)
             }
 
         }

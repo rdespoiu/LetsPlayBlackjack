@@ -20,6 +20,8 @@
 		AF5370131C21DDB700399976 /* deal.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF5370121C21DDB700399976 /* deal.wav */; };
 		AF901F471C0921F400BB112A /* CardFlipAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF901F461C0921F400BB112A /* CardFlipAnimation.swift */; };
 		AF9E5ADC1C1E1BD400DDD555 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */; };
+		AFF73F391C23267500E8EA3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF73F381C23267500E8EA3B /* SecondViewController.swift */; };
+		AFF73F3B1C23379B00E8EA3B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF73F3A1C23379B00E8EA3B /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		AF5370121C21DDB700399976 /* deal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = deal.wav; path = "../../../Stock Audio/deal.wav"; sourceTree = "<group>"; };
 		AF901F461C0921F400BB112A /* CardFlipAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFlipAnimation.swift; sourceTree = "<group>"; };
 		AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		AFF73F381C23267500E8EA3B /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AFF73F3A1C23379B00E8EA3B /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				AF1FE75C1C04060B005013D7 /* GameController.swift */,
+				AFF73F381C23267500E8EA3B /* SecondViewController.swift */,
+				AFF73F3A1C23379B00E8EA3B /* TableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -305,6 +311,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFF73F391C23267500E8EA3B /* SecondViewController.swift in Sources */,
+				AFF73F3B1C23379B00E8EA3B /* TableViewController.swift in Sources */,
 				AF1FE75D1C04060B005013D7 /* GameController.swift in Sources */,
 				AF2D11C61C0B75A70059C314 /* UIViewExtensions.swift in Sources */,
 				AF1FE7281C03FE44005013D7 /* AppDelegate.swift in Sources */,
