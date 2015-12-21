@@ -19,9 +19,15 @@ class GameController: UIViewController {
     
     //More Money Timer
     var moneyTimer: NSTimer?
-    let staticTime: Int = 5
-    var secondsLeft: Int! //CHANGE BACK TO 3600
+    let staticTime: Int = 3600 // CHANGE BACK TO 3600
+    var secondsLeft: Int!
+    var timerInProgress: Bool = false
     
+    //NSDate and Calendar Variables
+    
+    let userCalendar = NSCalendar.currentCalendar()
+    let todayComponents = NSDateComponents()
+    var today: NSDate!
     
     //Bet Increment Timers
     
@@ -63,7 +69,7 @@ class GameController: UIViewController {
     var playerBust = false
     var roundIsOver = false
     var cardsOnScreen = false
-    var replenishAmount: Int?
+    var replenishAmount = 1000
     
     //Sound Effects
     
@@ -83,18 +89,6 @@ class GameController: UIViewController {
     var cardback = [CardFlipAnimation]()
     
     
-    
-    
-    
-    
-    //TESTING
-    
-    
-    
-    
-    
-    
-    
     //Navigation Labels
     
     @IBOutlet weak var menuButtonLabel: UIButton!
@@ -103,7 +97,6 @@ class GameController: UIViewController {
     
     @IBOutlet weak var soundToggleLabel: UIButton!
     @IBOutlet weak var addMoneyToggleLabel: UIButton!
-    @IBOutlet weak var moneyTextFieldLabel: UITextField!
     
     
     //More Money Timer
@@ -197,6 +190,10 @@ class GameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TEST RUN
+        
+        
+        
         //Save Data Methods
         if let savedBalance = NSUserDefaults.standardUserDefaults().valueForKey("balance") as? Int {
             playerBalance = savedBalance
@@ -205,8 +202,30 @@ class GameController: UIViewController {
             currentBet = savedBet
         }
         
+        if let savedTimeLeft = NSUserDefaults.standardUserDefaults().valueForKey("seconds") as? Int {
+            secondsLeft = savedTimeLeft
+        }
+        
+        if let savedTimerInProgress = NSUserDefaults.standardUserDefaults().valueForKey("timerInProgress") as? Bool {
+            timerInProgress = savedTimerInProgress
+        }
+        
+        if let savedPickUpTime = NSUserDefaults.standardUserDefaults().objectForKey("pickUpTime") as! NSDate! {
+            today = savedPickUpTime
+            print("today variable was loaded")
+        }
+        
         //Future Banner Ad Implementation
         self.canDisplayBannerAds = false
+        
+        if today == nil {
+            print("TODAY WAS NIL")
+            testTime()
+        } else {
+            //if (staticTime - Int(floor(NSDate().timeIntervalSinceDate(today)))) <= 0 {
+                //testTime()
+            //}
+        }
         
         //Initialize the Game
         gameInit()
@@ -249,6 +268,14 @@ class GameController: UIViewController {
         sfxDealTwo.volume = 0.3
 
     }
+    
+
+    
+    //TESTING
+    
+
+    
+    
     
     
     //Betting Chip Buttons
@@ -332,7 +359,7 @@ class GameController: UIViewController {
         
         if currentBet <= 0 && playerBalance <= 0 {
             initialButtonState()
-            //return addMoney()
+            balanceLabel.userInteractionEnabled = true
             return showGameMessage("You're out of money! Add some more.")
         }
         
@@ -405,10 +432,12 @@ class GameController: UIViewController {
     //Navigation
     
     @IBAction func menuButtonPressed(sender: AnyObject) {
+        menuButtonLabel.fadeIn()
         menuSlideOut()
     }
     
     @IBAction func innerMenuButtonPressed(sender: UIButton) {
+        innerMenuButtonLabel.fadeIn()
         menuSlideIn()
         
     }
@@ -435,28 +464,19 @@ class GameController: UIViewController {
     }
     
     @IBAction func addMoneyPressed(sender: UIButton) {
-        
-        moneyTextFieldLabel.endEditing(true)
-        
-        replenishAmount = Int(moneyTextFieldLabel.text!)
+        addMoneyToggleLabel.fadeIn()
         
         if playerBalance <= 0 && currentBet <= 0 {
             
-            if replenishAmount != nil {
-                if replenishAmount > 0 && replenishAmount <= 1000 {
-                    playerBalance += replenishAmount!
-                    updateLabels()
-                    showGameMessage("Awesome! Let's keep playing!")
-                } else {
-                    showGameMessage("Please enter a max of $1000")
-                }
-            } else {
-                showGameMessage("That is not a valid number!")
-            }
+            playerBalance += replenishAmount
+            updateLabels()
+            showGameMessage("Awesome! Let's keep playing!")
             
         } else {
             showGameMessage("You still have money!")
         }
+        
+        menuSlideIn()
         
     }
     
@@ -465,10 +485,12 @@ class GameController: UIViewController {
         moreMoneyButton.enabled = false
         moreMoneyButton.alpha = 0.3
         playerBalance += 2000
-        
+        timerInProgress = false
         moneyTimerInit()
         
         updateLabels()
+        
+        menuSlideIn()
         
     }
     
@@ -622,6 +644,9 @@ class GameController: UIViewController {
         //Balance and Bet
         NSUserDefaults.standardUserDefaults().setInteger(playerBalance, forKey: "balance")
         NSUserDefaults.standardUserDefaults().setInteger(currentBet, forKey: "bet")
+        NSUserDefaults.standardUserDefaults().setInteger(secondsLeft, forKey: "seconds")
+        NSUserDefaults.standardUserDefaults().setBool(timerInProgress, forKey: "timerInProgress")
+        NSUserDefaults.standardUserDefaults().setObject(today, forKey: "pickUpTime")
         
         //Synchronize the Saved Data
         NSUserDefaults.standardUserDefaults().synchronize()
@@ -828,6 +853,7 @@ class GameController: UIViewController {
             dealButtonLabel.fadeIn()
             dealButtonLabel.enabled = true
             dealButtonLabel.alpha = 1.0
+            balanceLabel.userInteractionEnabled = true
             insufficientBetWarning()
             
         } else {
@@ -1345,7 +1371,23 @@ class GameController: UIViewController {
     }
     
     func moneyTimerInit() {
-        secondsLeft = staticTime
+        print("TIMER IN PROGRESS = \(timerInProgress)")
+        if secondsLeft != nil {
+            if secondsLeft <= 0 {
+                testTime()
+            }
+        }
+        
+        if !timerInProgress {
+            secondsLeft = staticTime - Int(floor(NSDate().timeIntervalSinceDate(today)))
+        } else {
+            secondsLeft = staticTime - Int(floor(NSDate().timeIntervalSinceDate(today)))
+            
+            if secondsLeft <= 0 {
+                secondsLeft = 0
+            }
+        }
+        timerInProgress = true
         moneyTimerLabel.text = convert(secondsLeft)
         moneyTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "moreMoneyTimer", userInfo: nil, repeats: true)
     }
@@ -1354,6 +1396,7 @@ class GameController: UIViewController {
         secondsLeft = secondsLeft - 1
         
         if secondsLeft <= 0 {
+            secondsLeft = 0
             moneyTimer?.invalidate()
             moneyTimerLabel.text = convert(secondsLeft)
             moreMoneyButton.enabled = true
@@ -1361,7 +1404,32 @@ class GameController: UIViewController {
         }
         
         moneyTimerLabel.text = convert(secondsLeft)
+        
+        saveData()
     }
+    
+    func testTime() {
+        todayComponents.year = NSCalendar.currentCalendar().component(NSCalendarUnit.Year, fromDate: NSDate())
+        todayComponents.month = NSCalendar.currentCalendar().component(NSCalendarUnit.Month, fromDate: NSDate())
+        todayComponents.day = NSCalendar.currentCalendar().component(NSCalendarUnit.Day, fromDate: NSDate())
+        todayComponents.hour = NSCalendar.currentCalendar().component(NSCalendarUnit.Hour, fromDate: NSDate())
+        todayComponents.minute = NSCalendar.currentCalendar().component(NSCalendarUnit.Minute, fromDate: NSDate())
+        todayComponents.second = NSCalendar.currentCalendar().component(NSCalendarUnit.Second, fromDate: NSDate())
+        today = userCalendar.dateFromComponents(todayComponents)!
+        print("Date Timer Started: \(today)")
+        
+        //NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "testTime2", userInfo: nil, repeats: true)
+    }
+    
+    func testTime2() {
+        let now = NSDate()
+        //print(floor(now.timeIntervalSinceDate(today)))
+        
+        print(staticTime - Int(floor(now.timeIntervalSinceDate(today))))
+        
+        
+    }
+    
     
     func convert(secs: Int) -> String {
         let hours = String(format: "%02d", (secs/3600))
