@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,20 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Hk4-g1-lr1">
-                                <rect key="frame" x="114" y="200" width="373" height="199"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="199" id="SEu-0Y-uYt"/>
-                                    <constraint firstAttribute="width" constant="373" id="sby-nT-Ms8"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resizedLogo" translatesAutoresizingMaskIntoConstraints="NO" id="CZQ-rK-xD7">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.22043976244343888" green="0.22043976244343888" blue="0.22043976244343888" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Hk4-g1-lr1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Da6-nn-XbT"/>
-                            <constraint firstItem="Hk4-g1-lr1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="WKI-9y-wwU"/>
+                            <constraint firstItem="CZQ-rK-xD7" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Cmd-lJ-sSc"/>
+                            <constraint firstItem="CZQ-rK-xD7" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="KKY-4A-gS5"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="CZQ-rK-xD7" secondAttribute="bottom" id="lkX-BM-znk"/>
+                            <constraint firstAttribute="trailing" secondItem="CZQ-rK-xD7" secondAttribute="trailing" id="vrv-Vi-QZa"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="559" height="150"/>
+        <image name="resizedLogo" width="559" height="150"/>
     </resources>
 </document>

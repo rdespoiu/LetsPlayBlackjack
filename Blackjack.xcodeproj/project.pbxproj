@@ -13,12 +13,14 @@
 		AF1FE7321C03FE44005013D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1FE7301C03FE44005013D7 /* LaunchScreen.storyboard */; };
 		AF1FE73D1C03FE44005013D7 /* War_CardGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE73C1C03FE44005013D7 /* War_CardGameTests.swift */; };
 		AF1FE7481C03FE44005013D7 /* War_CardGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE7471C03FE44005013D7 /* War_CardGameUITests.swift */; };
-		AF1FE75A1C040032005013D7 /* cardshuffling.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF1FE7581C040032005013D7 /* cardshuffling.wav */; };
-		AF1FE75B1C040032005013D7 /* deal.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF1FE7591C040032005013D7 /* deal.wav */; };
 		AF1FE75D1C04060B005013D7 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE75C1C04060B005013D7 /* GameController.swift */; };
 		AF1FE7611C041B69005013D7 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FE7601C041B69005013D7 /* Cards.swift */; };
 		AF2D11C61C0B75A70059C314 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D11C51C0B75A70059C314 /* UIViewExtensions.swift */; };
+		AF5370111C21DD2900399976 /* cardshuffling.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF53700F1C21DD2900399976 /* cardshuffling.wav */; };
+		AF5370131C21DDB700399976 /* deal.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF5370121C21DDB700399976 /* deal.wav */; };
 		AF901F471C0921F400BB112A /* CardFlipAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF901F461C0921F400BB112A /* CardFlipAnimation.swift */; };
+		AF9E5ADC1C1E1BD400DDD555 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */; };
+		AFF73F391C23267500E8EA3B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF73F381C23267500E8EA3B /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,12 +53,14 @@
 		AF1FE7431C03FE44005013D7 /* Blackjack.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blackjack.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1FE7471C03FE44005013D7 /* War_CardGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = War_CardGameUITests.swift; sourceTree = "<group>"; };
 		AF1FE7491C03FE44005013D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF1FE7581C040032005013D7 /* cardshuffling.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cardshuffling.wav; sourceTree = "<group>"; };
-		AF1FE7591C040032005013D7 /* deal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = deal.wav; sourceTree = "<group>"; };
 		AF1FE75C1C04060B005013D7 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		AF1FE7601C041B69005013D7 /* Cards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		AF2D11C51C0B75A70059C314 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		AF53700F1C21DD2900399976 /* cardshuffling.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cardshuffling.wav; path = "../../../Stock Audio/cardshuffling.wav"; sourceTree = "<group>"; };
+		AF5370121C21DDB700399976 /* deal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = deal.wav; path = "../../../Stock Audio/deal.wav"; sourceTree = "<group>"; };
 		AF901F461C0921F400BB112A /* CardFlipAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFlipAnimation.swift; sourceTree = "<group>"; };
+		AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		AFF73F381C23267500E8EA3B /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9E5ADC1C1E1BD400DDD555 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,12 +92,13 @@
 		AF1FE71B1C03FE44005013D7 = {
 			isa = PBXGroup;
 			children = (
+				AF9E5ADB1C1E1BD400DDD555 /* iAd.framework */,
 				AF1FE7261C03FE44005013D7 /* Blackjack */,
 				AF1FE73B1C03FE44005013D7 /* War-CardGameTests */,
 				AF1FE7461C03FE44005013D7 /* War-CardGameUITests */,
 				AF1FE7251C03FE44005013D7 /* Products */,
-				AF1FE7581C040032005013D7 /* cardshuffling.wav */,
-				AF1FE7591C040032005013D7 /* deal.wav */,
+				AF53700F1C21DD2900399976 /* cardshuffling.wav */,
+				AF5370121C21DDB700399976 /* deal.wav */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				AF1FE75C1C04060B005013D7 /* GameController.swift */,
+				AFF73F381C23267500E8EA3B /* SecondViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -272,10 +279,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF1FE75B1C040032005013D7 /* deal.wav in Resources */,
+				AF5370131C21DDB700399976 /* deal.wav in Resources */,
 				AF1FE7321C03FE44005013D7 /* LaunchScreen.storyboard in Resources */,
-				AF1FE75A1C040032005013D7 /* cardshuffling.wav in Resources */,
 				AF1FE72F1C03FE44005013D7 /* Assets.xcassets in Resources */,
+				AF5370111C21DD2900399976 /* cardshuffling.wav in Resources */,
 				AF1FE72D1C03FE44005013D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFF73F391C23267500E8EA3B /* SecondViewController.swift in Sources */,
 				AF1FE75D1C04060B005013D7 /* GameController.swift in Sources */,
 				AF2D11C61C0B75A70059C314 /* UIViewExtensions.swift in Sources */,
 				AF1FE7281C03FE44005013D7 /* AppDelegate.swift in Sources */,

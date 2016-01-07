@@ -2,20 +2,51 @@
 
 import UIKit
 import AVFoundation
+import iAd
 
 class GameController: UIViewController {
+    
+    //Nav Menu
+    var navOpen: Bool = false
+    
+    
+    // Colors
+    
+    var darkRed = UIColor(red: 155/255, green: 6/255, blue: 0/255, alpha: 1.0)
+    var darkGreen = UIColor(red: 19/255, green: 150/255, blue: 13/255, alpha: 1.0)
+    var grayTextColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0)
+ 
+    
+    //More Money Timer
+    var moneyTimer: NSTimer?
+    let staticTime: Int = 3600 // CHANGE BACK TO 3600
+    var secondsLeft: Int!
+    var timerInProgress: Bool = false
+    
+    //NSDate and Calendar Variables
+    
+    let userCalendar = NSCalendar.currentCalendar()
+    let todayComponents = NSDateComponents()
+    var today: NSDate!
+    
+    //Bet Increment Timers
     
     var timer: NSTimer?
     var newTimer: NSTimer?
     var pressDuration = 0
 
+    
     //Card/Deck Variables
+    
     var deck: Array<String>!
     var playingDeck: Array<String>!
     
-    //Balance/Bet Variables (Maybe change it up a bit to use immutable/mutable variables?)
+    
+    //Balance/Bet Variables
+
     var playerBalance = 1000
     var currentBet = 0
+    
     
     //Dealer Card Variables
     
@@ -23,11 +54,13 @@ class GameController: UIViewController {
     var dealerCardValues: Array<Int>!
     var dealerHandValue = 0
     
+    
     //Player Card Variables
     
     var playerCards: Array<String>!
     var playerCardValues: Array<Int>!
     var playerHandValue = 0
+    
     
     //Other variables
     
@@ -36,12 +69,15 @@ class GameController: UIViewController {
     var playerBust = false
     var roundIsOver = false
     var cardsOnScreen = false
-    var replenishAmount: Int!
+    var replenishAmount = 1000
     
     //Sound Effects
     
     var sfxCardShuffle: AVAudioPlayer!
     var sfxDeal: AVAudioPlayer!
+    var sfxDealTwo: AVAudioPlayer!
+    
+    var volumeOn: Bool = true
     
     //Card Flip Animation
     
@@ -49,13 +85,37 @@ class GameController: UIViewController {
     var cardFlipImageArray = [UIImage]()
     
     //Card Array
-    var allCards = [CardFlipAnimation]()
+    
+    var cardback = [CardFlipAnimation]()
+    
+    
+    //Navigation Labels
+    
+    @IBOutlet weak var menuButtonLabel: UIButton!
+    @IBOutlet weak var innerMenuButtonLabel: UIButton!
+    @IBOutlet weak var navMenuLabel: UIView!
+    
+    @IBOutlet weak var soundToggleLabel: UIButton!
+    @IBOutlet weak var addMoneyToggleLabel: UIButton!
+    
+    
+    //More Money Timer
+    
+    @IBOutlet weak var moneyTimerLabel: UILabel!
+    @IBOutlet weak var moreMoneyButton: UIButton!
+    
+    
+    
     
     //Text Labels
+    
     @IBOutlet weak var betAmountLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     
+    
+    
     //Game Message Label
+    
     @IBOutlet weak var gameMessageLabel: UILabel!
     
     
@@ -129,43 +189,96 @@ class GameController: UIViewController {
     //ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //TEST RUN
+        
+        
+        
+        //Save Data Methods
+        if let savedBalance = NSUserDefaults.standardUserDefaults().valueForKey("balance") as? Int {
+            playerBalance = savedBalance
+        }
+        if let savedBet = NSUserDefaults.standardUserDefaults().valueForKey("bet") as? Int {
+            currentBet = savedBet
+        }
+        
+        if let savedTimeLeft = NSUserDefaults.standardUserDefaults().valueForKey("seconds") as? Int {
+            secondsLeft = savedTimeLeft
+        }
+        
+        if let savedTimerInProgress = NSUserDefaults.standardUserDefaults().valueForKey("timerInProgress") as? Bool {
+            timerInProgress = savedTimerInProgress
+        }
+        
+        if let savedPickUpTime = NSUserDefaults.standardUserDefaults().objectForKey("pickUpTime") as! NSDate! {
+            today = savedPickUpTime
+            print("today variable was loaded")
+        }
+        
+        //Future Banner Ad Implementation
+        self.canDisplayBannerAds = false
+        
+        if today == nil {
+            print("TODAY WAS NIL")
+            testTime()
+        } else {
+            //if (staticTime - Int(floor(NSDate().timeIntervalSinceDate(today)))) <= 0 {
+                //testTime()
+            //}
+        }
+        
+        //Initialize the Game
         gameInit()
         updateLabels()
-        prepareForCardFlip()
-        loadCardFlipAnimation()
         addCardsToArray()
         initBetAll()
+        moneyTimerInit()
+        moreMoneyButton.enabled = false
+        moreMoneyButton.alpha = 0.3
         
         //Prepare for animations
         cardsInitialState()
+        prepareForCardFlip()
         
         //Hide the message display
         gameMessageLabel.alpha = 0.0
         gameMessageLabel.text = ""
+        
+        //Hide The Nav Menu
+        navMenuLabel.hidden = true
 
+        
+        
         //Initializer for sound effects. Sounds have not yet been implemented.
         
-        /*
+        
         do {
             try sfxCardShuffle = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("cardshuffling", ofType: "wav")!))
             try sfxDeal = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("deal", ofType: "wav")!))
+            try sfxDealTwo = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("deal", ofType: "wav")!))
             
             sfxCardShuffle.prepareToPlay()
             sfxDeal.prepareToPlay()
+            sfxDealTwo.prepareToPlay()
         } catch let err as NSError {
             print(err.debugDescription)
-        }*/
+        }
+        
+        sfxDeal.volume = 0.3
+        sfxDealTwo.volume = 0.3
 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print("Received a memory warning")
-    }
+
     
-    //BUTTON IBACTIONS
+    //TESTING
     
-        //Betting Chip Buttons
+
+    
+    
+    
+    
+    //Betting Chip Buttons
     
     @IBAction func blackChipTouchDown(sender: UIButton) {
         timer?.invalidate()
@@ -232,21 +345,23 @@ class GameController: UIViewController {
         print("Green Chip Touch Ended")
         addBet(1)
     }
-    
-    func chipPressDuration() {
-        pressDuration += 1
-        print("Held for: \(pressDuration) seconds")
-        
-    }
-    
 
     
-        //Playing Buttons
+    //Playing Buttons
     
     @IBAction func dealButtonPressed(sender: UIButton? = nil) {
         balanceLabel.userInteractionEnabled = false
-        handValueLabel.textColor = UIColor.whiteColor()
-        dealerHandValueLabel.textColor = UIColor.whiteColor()
+        handValueLabel.textColor = grayTextColor
+        dealerHandValueLabel.textColor = grayTextColor
+        
+        dealButtonLabel.enabled = false
+        dealButtonLabel.alpha = 0.5
+        
+        if currentBet <= 0 && playerBalance <= 0 {
+            initialButtonState()
+            balanceLabel.userInteractionEnabled = true
+            return showGameMessage("You're out of money! Add some more.")
+        }
         
         if cardsOnScreen == true {
             resetGameState()
@@ -255,8 +370,9 @@ class GameController: UIViewController {
         } else {
             extendedDeal()
         }
+
     }
-    
+
     @IBAction func doubleButtonPressed(sender: UIButton) {
         if playerBalance < currentBet {
             showGameMessage("You don't have enough money to double down!")
@@ -266,8 +382,9 @@ class GameController: UIViewController {
             reShuffle()
             doubleAction()
             updateHandLabel()
-            checkResult()
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "dealerPrepareToPlay", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "checkResult", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "flipCardFour", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "dealerPrepareToPlay", userInfo: nil, repeats: false)
             
         }
         
@@ -276,6 +393,8 @@ class GameController: UIViewController {
     }
     
     @IBAction func hitButtonPressed(sender: UIButton) {
+        hitButtonLabel.enabled = false
+        hitButtonLabel.alpha = 0.5
         doubleButtonLabel.alpha = 0.5
         doubleButtonLabel.enabled = false
         hitButtonLabel.fadeIn()
@@ -283,7 +402,6 @@ class GameController: UIViewController {
         hitAction()
         updateHandLabel()
         NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "checkResult", userInfo: nil, repeats: false)
-        
     }
     
     @IBAction func standButtonPressed(sender: UIButton) {
@@ -292,7 +410,6 @@ class GameController: UIViewController {
         flipCardFour()
         disableGameButtons()
         reShuffle()
-        standAction()
         updateHandLabel()
         checkResult()
         playerStand = true
@@ -301,7 +418,6 @@ class GameController: UIViewController {
     }
     
     @IBAction func clearButtonPressed(sender: UIButton) {
-        //For testing purposes, delete the slide animation
         clearButtonLabel.fadeIn()
         playerBalance += currentBet
         currentBet -= currentBet
@@ -309,20 +425,115 @@ class GameController: UIViewController {
         
     }
     
+    
+    
+    
+    
+    //Navigation
+    
+    @IBAction func menuButtonPressed(sender: AnyObject) {
+        menuButtonLabel.fadeIn()
+        menuSlideOut()
+    }
+    
+    @IBAction func innerMenuButtonPressed(sender: UIButton) {
+        innerMenuButtonLabel.fadeIn()
+        menuSlideIn()
+        
+    }
+    
+    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
+        
+        if !navOpen {
+            menuSlideOut()
+        }
+        
+    }
+
+    @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
+        
+        if navOpen {
+            menuSlideIn()
+        }
+        
+    }
+    
+    @IBAction func soundTogglePressed(sender: UIButton) {
+        soundToggle()
+        
+    }
+    
+    @IBAction func addMoneyPressed(sender: UIButton) {
+        addMoneyToggleLabel.fadeIn()
+        
+        if playerBalance <= 0 && currentBet <= 0 {
+            
+            playerBalance += replenishAmount
+            updateLabels()
+            showGameMessage("Awesome! Let's keep playing!")
+            
+        } else {
+            showGameMessage("You still have money!")
+        }
+        
+        menuSlideIn()
+        
+    }
+    
+    @IBAction func moreMoneyButtonPressed(sender: UIButton) {
+        moreMoneyButton.fadeIn()
+        moreMoneyButton.enabled = false
+        moreMoneyButton.alpha = 0.3
+        playerBalance += 2000
+        timerInProgress = false
+        moneyTimerInit()
+        
+        updateLabels()
+        
+        menuSlideIn()
+        
+    }
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Navigation Functions
+    
+    func menuSlideOut() {
+        navOpen = true
+        navMenuLabel.hidden = false
+        navMenuLabel.slideFromLeft()
+    }
+    
+    func menuSlideIn() {
+        navOpen = false
+        navMenuLabel.hidden = true
+        navMenuLabel.slideFromRight()
+    }
+    
  
-    
-    
-    
-    //Game Functions (Organize these)
+    //Game Initializers and Mechanics
     
     func gameInit() {
+        
+        gameMessageLabel.layer.shadowOffset = CGSize(width: -3, height: 0)
+        gameMessageLabel.layer.shadowOpacity = 1
+        gameMessageLabel.layer.shadowRadius = 5
+        
         deck = Cards().makeDeck()
         playingDeck = Cards().shuffleDeck(deck)
         
         dealerHandValueLabel.text = ""
         handValueLabel.text = ""
         
-        doubleButtonLabel.enabled = true
+        doubleButtonLabel.enabled = false
         doubleButtonLabel.alpha = 0.5
         
         hitButtonLabel.enabled = false
@@ -336,12 +547,20 @@ class GameController: UIViewController {
         
         playerScoreView.alpha = 0.0
         dealerScoreView.alpha = 0.0
-        
     }
     
     func addCardsToArray() {
-        allCards += [playerCardOne, playerCardTwo, playerCardThree, playerCardFour, playerCardFive, playerCardSix, playerCardSeven, playerCardEight, playerCardNine, playerCardTen, playerCardEleven, playerCardTwelve, dealerCardOne, dealerCardTwo, dealerCardThree, dealerCardFour, dealerCardFive, dealerCardSix, dealerCardSeven, dealerCardEight, dealerCardNine, dealerCardTen, dealerCardEleven,dealerCardTwelve]
-        print(allCards.count)
+        cardback += [playerCardOne, playerCardTwo, playerCardThree, playerCardFour, playerCardFive, playerCardSix, playerCardSeven, playerCardEight, playerCardNine, playerCardTen, playerCardEleven, playerCardTwelve, dealerCardOne, dealerCardTwo, dealerCardThree, dealerCardFour, dealerCardFive, dealerCardSix, dealerCardSeven, dealerCardEight, dealerCardNine, dealerCardTen, dealerCardEleven,dealerCardTwelve]
+        cardStyles()
+        print(cardback.count)
+    }
+    
+    func cardStyles() {
+        for card in cardback {
+            card.layer.shadowOffset = CGSize(width: -3, height: 0)
+            card.layer.shadowOpacity = 1
+            card.layer.shadowRadius = 5
+        }
     }
     
     func disableBets() {
@@ -389,9 +608,26 @@ class GameController: UIViewController {
         clearButtonLabel.alpha = 0.5
     }
     
-    //FIX THIS. IF IT RESHUFFLES AT THE END OF A GAME, THE ENDGAME MESSAGE DOES NOT SHOW. PROBABLY HAVE TO REMOVE THE RESHUFFLE ALERT AND USE AN IBOUTLET TO DISPLAY IT
+    func initialButtonState() {
+        doubleButtonLabel.enabled = false
+        doubleButtonLabel.alpha = 0.5
+        
+        hitButtonLabel.enabled = false
+        hitButtonLabel.alpha = 0.5
+        
+        standButtonLabel.enabled = false
+        standButtonLabel.alpha = 0.5
+        
+        clearButtonLabel.enabled = true
+        clearButtonLabel.alpha = 1.0
+        
+        dealButtonLabel.enabled = true
+        dealButtonLabel.alpha = 1.0
+    }
+    
     func reShuffle() {
         if Double(playingDeck.count) <= (208/2) {
+            playShuffle()
             deck = Cards().makeDeck()
             playingDeck = Cards().shuffleDeck(deck)
             
@@ -403,6 +639,53 @@ class GameController: UIViewController {
             
         }
     }
+    
+    func saveData() {
+        //Balance and Bet
+        NSUserDefaults.standardUserDefaults().setInteger(playerBalance, forKey: "balance")
+        NSUserDefaults.standardUserDefaults().setInteger(currentBet, forKey: "bet")
+        NSUserDefaults.standardUserDefaults().setInteger(secondsLeft, forKey: "seconds")
+        NSUserDefaults.standardUserDefaults().setBool(timerInProgress, forKey: "timerInProgress")
+        NSUserDefaults.standardUserDefaults().setObject(today, forKey: "pickUpTime")
+        
+        //Synchronize the Saved Data
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    
+    //Play Sounds
+    func playCardFlip() {
+        if sfxDeal.playing == true {
+            sfxDealTwo.play()
+        } else {
+            sfxDeal.play()
+        }
+    }
+    
+    func playShuffle() {
+        sfxCardShuffle.play()
+    }
+    
+    func soundToggle() {
+        if volumeOn == true {
+            soundToggleLabel.setTitleColor(darkRed, forState: UIControlState.Normal)
+            soundToggleLabel.setTitle("Sound: Off", forState: UIControlState.Normal)
+            volumeOn = false
+            sfxCardShuffle.volume = 0
+            sfxDeal.volume = 0
+            sfxDealTwo.volume = 0
+        } else {
+            soundToggleLabel.setTitle("Sound: On", forState: UIControlState.Normal)
+            soundToggleLabel.setTitleColor(darkGreen, forState: UIControlState.Normal)
+            volumeOn = true
+            sfxCardShuffle.volume = 1.0
+            sfxDealTwo.volume = 0.3
+            sfxDeal.volume = 0.3
+        }
+    }
+    
+    
+    //Labels and Messages
     
     func updateHandLabel() {
         if handValueLabel.text != "\(playerHandValue)" {
@@ -434,7 +717,33 @@ class GameController: UIViewController {
         gameMessageLabel.fadeOut(0.30, delay: 2.0)
     }
     
+    func showDealerScore() {
+        dealerScoreView.fadeIn()
+        dealerScoreView.alpha = 1.0
+        
+    }
     
+    func labelsChangeColor() {
+        UIView.transitionWithView(self.balanceLabel, duration: 0.1, options: .TransitionCrossDissolve, animations: { self.balanceLabel.textColor = self.darkRed }, completion: nil)
+        UIView.transitionWithView(self.betAmountLabel, duration: 0.1, options: .TransitionCrossDissolve, animations: { self.betAmountLabel.textColor = self.darkGreen }, completion: nil)
+        
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "labelsTurnWhite", userInfo: nil, repeats: false)
+    }
+    
+    func labelsTurnWhite() {
+        UIView.transitionWithView(self.balanceLabel, duration: 0.1, options: .TransitionCrossDissolve, animations: { self.balanceLabel.textColor = self.grayTextColor }, completion: nil)
+        UIView.transitionWithView(self.betAmountLabel, duration: 0.1, options: .TransitionCrossDissolve, animations: { self.betAmountLabel.textColor = self.grayTextColor }, completion: nil)
+
+    }
+    
+    func showGameMessage(message: String = "You forgot to enter text") {
+        gameMessageLabel.text = message
+        gameMessageLabel.alpha = 0.0
+        gameMessageLabel.slideFromRight()
+        gameMessageLabel.alpha = 1.0
+        
+        
+    }
     
     
     //Bet Functions
@@ -452,16 +761,10 @@ class GameController: UIViewController {
         } else {
             playerBalance -= desiredAmount
             currentBet += desiredAmount
-            
-            //balanceLabel.textColor = UIColor.redColor()
-            //betAmountLabel.textColor = UIColor.greenColor()
-
+            saveData()
             labelsChangeColor()
 
         }
-        
-        //newTimer?.invalidate()
-        //timer?.invalidate()
         
         updateLabels()
     }
@@ -537,50 +840,25 @@ class GameController: UIViewController {
         addBet(playerBalance, sender: "allIn")
     }
     
-    func showDealerScore() {
-        dealerScoreView.fadeIn()
-        dealerScoreView.alpha = 1.0
+    func chipPressDuration() {
+        pressDuration += 1
+        print("Held for: \(pressDuration) seconds")
         
     }
     
     
-    func labelsChangeColor() {
-        UIView.transitionWithView(self.balanceLabel, duration: 0.1, options: .TransitionCrossDissolve, animations: { self.balanceLabel.textColor = UIColor.redColor() }, completion: nil)
-        UIView.transitionWithView(self.betAmountLabel, duration: 0.1, options: .TransitionCrossDissolve, animations: { self.betAmountLabel.textColor = UIColor.greenColor() }, completion: nil)
-        
-        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "labelsTurnWhite", userInfo: nil, repeats: false)
-    }
-    
-    func labelsTurnWhite() {
-        UIView.transitionWithView(self.balanceLabel, duration: 0.1, options: .TransitionCrossDissolve, animations: { self.balanceLabel.textColor = UIColor.whiteColor() }, completion: nil)
-        UIView.transitionWithView(self.betAmountLabel, duration: 0.1, options: .TransitionCrossDissolve, animations: { self.betAmountLabel.textColor = UIColor.whiteColor() }, completion: nil)
-        
-        /*
-        balanceLabel.alpha = 0.0
-        betAmountLabel.alpha = 0.0
-        
-        balanceLabel.fadeIn(1.0)
-        betAmountLabel.fadeIn(1.0)
-        
-        balanceLabel.textColor = UIColor.whiteColor()
-        betAmountLabel.textColor = UIColor.whiteColor()*/
-    }
-    
-    func showGameMessage(message: String = "You forgot to enter text") {
-        gameMessageLabel.text = message
-        gameMessageLabel.alpha = 0.0
-        gameMessageLabel.slideFromRight()
-        gameMessageLabel.alpha = 1.0
-        
-        
-    }
-    
+    //Gameplay Functions
     func extendedDeal() {
         if currentBet <= 0 {
             dealButtonLabel.fadeIn()
+            dealButtonLabel.enabled = true
+            dealButtonLabel.alpha = 1.0
+            balanceLabel.userInteractionEnabled = true
             insufficientBetWarning()
+            
         } else {
-            //gameButtonFadeTest()
+            dealButtonLabel.enabled = false
+            dealButtonLabel.alpha = 0.5
             
             if gameMessageLabel.text == "" {
                 playerScoreView.alpha = 1.0
@@ -609,19 +887,9 @@ class GameController: UIViewController {
             
         }
         
-
-    }
-    
-    func gameButtonFadeTest() {
-        dealButtonLabel.fadeOut()
-        dealButtonLabel.alpha = 0.0
-        dealButtonLabel.hidden = true
         
-        clearButtonLabel.fadeOut()
-        clearButtonLabel.alpha = 0.0
-        clearButtonLabel.hidden = true
     }
-    
+
     func dealAction() {
         dealerCards = []
         dealerCardValues = []
@@ -667,9 +935,6 @@ class GameController: UIViewController {
         playerHandValue = playerHandValue + playerCardValues.last!
         
         showNextCard()
-        
-        
-        
     }
     
     func doubleAction() {
@@ -693,10 +958,6 @@ class GameController: UIViewController {
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "playerDidDoubleDown", userInfo: nil, repeats: false)
     }
     
-    func standAction() {
-        
-    }
-    
     func buttonStateOnDeal() {
         dealButtonLabel.enabled = false
         dealButtonLabel.alpha = 0.5
@@ -713,6 +974,13 @@ class GameController: UIViewController {
         clearButtonLabel.enabled = false
         clearButtonLabel.alpha = 0.5
     }
+    
+    func playerDidDoubleDown() {
+        playerDouble = true
+    }
+    
+    
+    //Card Deck Manipulation
     
     func individualCards(desiredCard: String) -> Int {
         return Cards().cardValues(desiredCard)
@@ -745,7 +1013,129 @@ class GameController: UIViewController {
         }
     }
     
+    func showNextCard() {
+        if playerCardThree.hidden == true {
+            dealAnyCard(playerCardThree)
+        } else if playerCardFour.hidden == true {
+            dealAnyCard(playerCardFour)
+        } else if playerCardFive.hidden == true {
+            dealAnyCard(playerCardFive)
+        } else if playerCardSix.hidden == true {
+            dealAnyCard(playerCardSix)
+        } else if playerCardSeven.hidden == true {
+            dealAnyCard(playerCardSeven)
+        } else if playerCardEight.hidden == true {
+            dealAnyCard(playerCardEight)
+        } else if playerCardNine.hidden == true {
+            dealAnyCard(playerCardNine)
+        } else if playerCardTen.hidden == true {
+            dealAnyCard(playerCardTen)
+        } else if playerCardEleven.hidden == true {
+            dealAnyCard(playerCardEleven)
+        } else if playerCardTwelve.hidden == true {
+            dealAnyCard(playerCardTwelve)
+        }
+    }
+    
+    func resetCards() {
+        playerCardOne.image = UIImage(named: "cardback")
+        playerCardOne.hidden = false
+        playerCardTwo.image = UIImage(named: "cardback")
+        playerCardTwo.hidden = false
+        playerCardThree.hidden = true
+        playerCardFour.hidden = true
+        playerCardFive.hidden = true
+        playerCardSix.hidden = true
+        playerCardSeven.hidden = true
+        playerCardEight.hidden = true
+        playerCardNine.hidden = true
+        playerCardTen.hidden = true
+        playerCardEleven.hidden = true
+        playerCardTwelve.hidden = true
+        
+        dealerCardOne.image = UIImage(named: "cardback")
+        dealerCardOne.hidden = false
+        dealerCardTwo.image = UIImage(named: "cardback")
+        dealerCardTwo.hidden = false
+        dealerCardThree.hidden = true
+        dealerCardFour.hidden = true
+        dealerCardFive.hidden = true
+        dealerCardSix.hidden = true
+        dealerCardSeven.hidden = true
+        dealerCardEight.hidden = true
+        dealerCardNine.hidden = true
+        dealerCardTen.hidden = true
+        dealerCardEleven.hidden = true
+        dealerCardTwelve.hidden = true
+    }
+    
+    
+    //Outcome Functions
+    
+    func playerWin() {
+        print("You win")
+        roundIsOver = true
+        endGame("playerWin")
+    }
+    
+    func playerBlackJack() {
+        print("You got Blackjack")
+        roundIsOver = true
+        endGame("playerBlackJack")
+    }
+    
+    func dealerWin() {
+        print("Dealer wins")
+        roundIsOver = true
+        endGame("dealerWin")
+        
+    }
+    
+    func dealerBlackJack() {
+        print("Dealer got Blackjack")
+        roundIsOver = true
+        endGame("dealerBlackJack")
+    }
+    
+    func push() {
+        roundIsOver = true
+        endGame("push")
+    }
+    
+    func bust() {
+        print("You busted")
+        roundIsOver = true
+        endGame("bust")
+        dealerScoreView.alpha = 1.0
+        dealerScoreView.hidden = false
+        
+    }
+    
+    func dealerBust() {
+        print("Dealer busted")
+        roundIsOver = true
+        endGame("dealerBust")
+    }
+    
+    func playerTurnOver() -> Bool {
+        if playerStand == true{
+            return true
+        } else if playerDouble == true {
+            return true
+        } else if playerBust == true {
+            return true
+        } else {
+            return false
+        }
+        
+    }
+    
+    func roundOver() -> Bool {
+        return true
+    }
+    
     func checkResult() {
+        
         if playerCards.count == 2 {
             if playerHandValue == 21 && dealerHandValue == 21 {
                 showDealerScore()
@@ -775,188 +1165,21 @@ class GameController: UIViewController {
                 if playerHandValue >= 22 {
                     playerStand = true
                     updateHandLabel()
+                    hitButtonLabel.enabled = false
+                    hitButtonLabel.alpha = 0.5
                     bust()
+                } else {
+                    hitButtonLabel.enabled = true
+                    hitButtonLabel.alpha = 1.0
                 }
+            } else {
+                hitButtonLabel.enabled = true
+                hitButtonLabel.alpha = 1.0
             }
         }
     }
+    
 
-
-
-    //UGLY INEFFICIENT CODE--Fix this
-    func showNextCard() {
-        if playerCardThree.hidden == true {
-            dealAnyCard(playerCardThree)
-        } else if playerCardFour.hidden == true {
-            dealAnyCard(playerCardFour)
-        } else if playerCardFive.hidden == true {
-            dealAnyCard(playerCardFive)
-        } else if playerCardSix.hidden == true {
-            dealAnyCard(playerCardSix)
-        } else if playerCardSeven.hidden == true {
-            dealAnyCard(playerCardSeven)
-        } else if playerCardEight.hidden == true {
-            dealAnyCard(playerCardEight)
-        } else if playerCardNine.hidden == true {
-            dealAnyCard(playerCardNine)
-        } else if playerCardTen.hidden == true {
-            dealAnyCard(playerCardTen)
-        } else if playerCardEleven.hidden == true {
-            dealAnyCard(playerCardEleven)
-        } else if playerCardTwelve.hidden == true {
-            dealAnyCard(playerCardTwelve)
-        }
-    }
-    
-    
-    //UGLY INEFFICIENT CODE--Fix this
-    func resetCards() {
-        playerCardOne.image = UIImage(named: "cardback2")
-        playerCardOne.hidden = false
-        playerCardTwo.image = UIImage(named: "cardback2")
-        playerCardTwo.hidden = false
-        playerCardThree.hidden = true
-        playerCardFour.hidden = true
-        playerCardFive.hidden = true
-        playerCardSix.hidden = true
-        playerCardSeven.hidden = true
-        playerCardEight.hidden = true
-        playerCardNine.hidden = true
-        playerCardTen.hidden = true
-        playerCardEleven.hidden = true
-        playerCardTwelve.hidden = true
-        
-        dealerCardOne.image = UIImage(named: "cardback2")
-        dealerCardOne.hidden = false
-        dealerCardTwo.image = UIImage(named: "cardback2")
-        dealerCardTwo.hidden = false
-        dealerCardThree.hidden = true
-        dealerCardFour.hidden = true
-        dealerCardFive.hidden = true
-        dealerCardSix.hidden = true
-        dealerCardSeven.hidden = true
-        dealerCardEight.hidden = true
-        dealerCardNine.hidden = true
-        dealerCardTen.hidden = true
-        dealerCardEleven.hidden = true
-        dealerCardTwelve.hidden = true
-    }
-    
-    func initialButtonState() {
-        doubleButtonLabel.enabled = false
-        doubleButtonLabel.alpha = 0.5
-        
-        hitButtonLabel.enabled = false
-        hitButtonLabel.alpha = 0.5
-        
-        standButtonLabel.enabled = false
-        standButtonLabel.alpha = 0.5
-        
-        clearButtonLabel.enabled = true
-        clearButtonLabel.alpha = 1.0
-        
-        dealButtonLabel.enabled = true
-        dealButtonLabel.alpha = 1.0
-    }
-    
-    func resetGameState() {
-        resetCards()
-        enableBets()
-        
-        playerScoreView.fadeOut()
-        playerScoreView.alpha = 0.0
-        
-        dealerScoreView.fadeOut()
-        dealerScoreView.alpha = 0.0
-        
-        playerStand = false
-        playerDouble = false
-        playerBust = false
-        roundIsOver = false
-        
-        dealerCards = []
-        dealerCardValues = []
-        
-        playerCards = []
-        playerCardValues = []
-        
-        dealerHandValue = 0
-        playerHandValue = 0
-        
-        dealerHandValueLabel.text = ""
-        handValueLabel.text = ""
-    
-        cardsInitialState()
-        
-        
-    }
-    
-    func playerDidDoubleDown() {
-        playerDouble = true
-    }
-    
-    func playerWin() {
-        print("You win")
-        roundIsOver = true
-        endGame("playerWin")
-    }
-    
-    func playerBlackJack() {
-        print("You got Blackjack")
-        roundIsOver = true
-        endGame("playerBlackJack")
-    }
-    
-    func dealerWin() {
-        print("Dealer wins")
-        roundIsOver = true
-        endGame("dealerWin")
-
-    }
-    
-    func dealerBlackJack() {
-        print("Dealer got Blackjack")
-        roundIsOver = true
-        endGame("dealerBlackJack")
-    }
-    
-    func push() {
-        roundIsOver = true
-        endGame("push")
-    }
-    
-    func bust() {
-        print("You busted")
-        roundIsOver = true
-        endGame("bust")
-    }
-    
-    func dealerBust() {
-        print("Dealer busted")
-        roundIsOver = true
-        endGame("dealerBust")
-    }
-    
-    func playerTurnOver() -> Bool {
-        if playerStand == true{
-            return true
-        } else if playerDouble == true {
-            return true
-        } else if playerBust == true {
-            return true
-        } else {
-            return false
-        }
-
-    }
-    
-    func roundOver() -> Bool {
-        return true
-    }
-    
-    
-    
-    
     // Dealer Play Functions
     
     func dealerPrepareToPlay() {
@@ -1005,9 +1228,11 @@ class GameController: UIViewController {
     }
     
     func shouldDealerHit() -> Bool {
-        if dealerHandValue > playerHandValue {
+        /*if dealerHandValue > playerHandValue {
             return false
-        } else if dealerHandValue <= 16 {
+        } else if */
+        
+        if dealerHandValue <= 16 {
             return true
         } else if dealerHandValue == 17 {
             if dealerCardValues.contains(11) {
@@ -1035,7 +1260,7 @@ class GameController: UIViewController {
                 newHandValue += num
             }
             dealerHandValue = newHandValue
-            
+            updateHandLabel()
             return true
         } else {
             return false
@@ -1098,7 +1323,7 @@ class GameController: UIViewController {
     
     // Add more money
     
-    func addMoney() {        
+    func addMoney() {
         let alertController = UIAlertController(title: "You're out of money!", message:
             "It looks like you're out of money! Luckily, you get to replenish your chips for free! I don't believe in microtransactions that hinder gameplay, and I want you to keep on Blackjackin' it up! Please consider, however, leaving a review in the App Store, as I am an independent developer and every critique helps! Thanks, and have fun!", preferredStyle: UIAlertControllerStyle.Alert)
 
@@ -1145,28 +1370,96 @@ class GameController: UIViewController {
         
     }
     
+    func moneyTimerInit() {
+        print("TIMER IN PROGRESS = \(timerInProgress)")
+        if secondsLeft != nil {
+            if secondsLeft <= 0 {
+                testTime()
+            }
+        }
+        
+        if !timerInProgress {
+            secondsLeft = staticTime - Int(floor(NSDate().timeIntervalSinceDate(today)))
+        } else {
+            secondsLeft = staticTime - Int(floor(NSDate().timeIntervalSinceDate(today)))
+            
+            if secondsLeft <= 0 {
+                secondsLeft = 0
+            }
+        }
+        timerInProgress = true
+        moneyTimerLabel.text = convert(secondsLeft)
+        moneyTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "moreMoneyTimer", userInfo: nil, repeats: true)
+    }
     
-
-    //End Game
+    func moreMoneyTimer() {
+        secondsLeft = secondsLeft - 1
+        
+        if secondsLeft <= 0 {
+            secondsLeft = 0
+            moneyTimer?.invalidate()
+            moneyTimerLabel.text = convert(secondsLeft)
+            moreMoneyButton.enabled = true
+            moreMoneyButton.alpha = 1.0
+        }
+        
+        moneyTimerLabel.text = convert(secondsLeft)
+        
+        saveData()
+    }
+    
+    func testTime() {
+        todayComponents.year = NSCalendar.currentCalendar().component(NSCalendarUnit.Year, fromDate: NSDate())
+        todayComponents.month = NSCalendar.currentCalendar().component(NSCalendarUnit.Month, fromDate: NSDate())
+        todayComponents.day = NSCalendar.currentCalendar().component(NSCalendarUnit.Day, fromDate: NSDate())
+        todayComponents.hour = NSCalendar.currentCalendar().component(NSCalendarUnit.Hour, fromDate: NSDate())
+        todayComponents.minute = NSCalendar.currentCalendar().component(NSCalendarUnit.Minute, fromDate: NSDate())
+        todayComponents.second = NSCalendar.currentCalendar().component(NSCalendarUnit.Second, fromDate: NSDate())
+        today = userCalendar.dateFromComponents(todayComponents)!
+        print("Date Timer Started: \(today)")
+        
+        //NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "testTime2", userInfo: nil, repeats: true)
+    }
+    
+    func testTime2() {
+        let now = NSDate()
+        //print(floor(now.timeIntervalSinceDate(today)))
+        
+        print(staticTime - Int(floor(now.timeIntervalSinceDate(today))))
+        
+        
+    }
+    
+    
+    func convert(secs: Int) -> String {
+        let hours = String(format: "%02d", (secs/3600))
+        let minutes = String(format: "%02d", (secs % 3600) / 60)
+        let seconds = String(format: "%02d", (secs % 3600) % 60)
+        
+        return "\(hours):\(minutes):\(seconds)"
+    }
+    
+    
+    //End Game and Reset State
     
     func endGame(messageID: String) {
         enableBets()
         initialButtonState()
         
         if playerHandValue > dealerHandValue {
-            handValueLabel.textColor = UIColor.greenColor()
-            dealerHandValueLabel.textColor = UIColor.redColor()
+            handValueLabel.textColor = darkGreen
+            dealerHandValueLabel.textColor = darkRed
         } else if dealerHandValue > playerHandValue {
-            handValueLabel.textColor = UIColor.redColor()
-            dealerHandValueLabel.textColor = UIColor.greenColor()
+            handValueLabel.textColor = darkRed
+            dealerHandValueLabel.textColor = darkGreen
         } else {
-            handValueLabel.textColor = UIColor.redColor()
-            dealerHandValueLabel.textColor = UIColor.redColor()
+            handValueLabel.textColor = darkRed
+            dealerHandValueLabel.textColor = darkRed
         }
         
         if messageID == "playerWin" {
-            handValueLabel.textColor = UIColor.greenColor()
-            dealerHandValueLabel.textColor = UIColor.redColor()
+            handValueLabel.textColor = darkGreen
+            dealerHandValueLabel.textColor = darkRed
             
             playerBalance += currentBet
             updateLabels()
@@ -1177,20 +1470,21 @@ class GameController: UIViewController {
         }
         
         else if messageID == "playerBlackJack" {
-            handValueLabel.textColor = UIColor.greenColor()
-            dealerHandValueLabel.textColor = UIColor.redColor()
+            handValueLabel.textColor = darkGreen
+            dealerHandValueLabel.textColor = darkRed
             
             playerBalance += currentBet
             updateLabels()
             
+            sfxDealTwo.play()
             dealerCardTwo.image = UIImage(named: "\(dealerCards[1])")
             
             showGameMessage("You got Blackjack!")
         }
         
         else if messageID == "dealerWin" {
-            handValueLabel.textColor = UIColor.redColor()
-            dealerHandValueLabel.textColor = UIColor.greenColor()
+            handValueLabel.textColor = darkRed
+            dealerHandValueLabel.textColor = darkGreen
             
             playerBalance -= currentBet
             updateLabels()
@@ -1202,12 +1496,13 @@ class GameController: UIViewController {
         }
         
         else if messageID == "dealerBlackJack" {
-            handValueLabel.textColor = UIColor.redColor()
-            dealerHandValueLabel.textColor = UIColor.greenColor()
+            handValueLabel.textColor = darkRed
+            dealerHandValueLabel.textColor = darkGreen
             
             playerBalance -= currentBet
             updateLabels()
             
+            sfxDealTwo.play()
             dealerCardTwo.image = UIImage(named: "\(dealerCards[1])")
             
             showGameMessage("Dealer got Blackjack!")
@@ -1215,8 +1510,8 @@ class GameController: UIViewController {
         }
         
         else if messageID == "push" {
-            handValueLabel.textColor = UIColor.redColor()
-            dealerHandValueLabel.textColor = UIColor.redColor()
+            handValueLabel.textColor = darkRed
+            dealerHandValueLabel.textColor = darkRed
             
             updateLabels()
             
@@ -1226,8 +1521,8 @@ class GameController: UIViewController {
         }
         
         else if messageID == "bust" {
-            handValueLabel.textColor = UIColor.redColor()
-            dealerHandValueLabel.textColor = UIColor.greenColor()
+            handValueLabel.textColor = darkRed
+            dealerHandValueLabel.textColor = darkGreen
             
             playerBalance -= currentBet
             updateLabels()
@@ -1238,8 +1533,8 @@ class GameController: UIViewController {
         }
         
         else if messageID == "dealerBust" {
-            handValueLabel.textColor = UIColor.greenColor()
-            dealerHandValueLabel.textColor = UIColor.redColor()
+            handValueLabel.textColor = darkGreen
+            dealerHandValueLabel.textColor = darkRed
             
             playerBalance += currentBet
             updateLabels()
@@ -1254,23 +1549,64 @@ class GameController: UIViewController {
             currentBet -= currentBet
             updateLabels()
             if playerBalance <= 0 {
-                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "addMoney", userInfo: nil, repeats: false)
+                showGameMessage("You're out of money! Add some more.")
+                //NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "addMoney", userInfo: nil, repeats: false)
             }
 
         }
         
-        balanceLabel.userInteractionEnabled = true
+        if playerDouble == true {
+            playerDouble = false
+            playerBalance += (currentBet / 2)
+            currentBet -= (currentBet / 2)
+            updateLabels()
+            
+        }
         
-        //NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "resetGameState", userInfo: nil, repeats: false) --Probably delete
+        balanceLabel.userInteractionEnabled = true
+        saveData()
+        updateLabels()
         
     }
-
+    
+    func resetGameState() {
+        
+        resetCards()
+        enableBets()
+        
+        playerScoreView.fadeOut()
+        playerScoreView.alpha = 0.0
+        
+        dealerScoreView.fadeOut()
+        dealerScoreView.alpha = 0.0
+        
+        playerStand = false
+        playerDouble = false
+        playerBust = false
+        roundIsOver = false
+        
+        dealerCards = []
+        dealerCardValues = []
+        
+        playerCards = []
+        playerCardValues = []
+        
+        dealerHandValue = 0
+        playerHandValue = 0
+        
+        dealerHandValueLabel.text = ""
+        handValueLabel.text = ""
+        
+        cardsInitialState()
+        
+        
+    }
 
 
     //Animations
     func prepareForCardFlip() {
         
-        defaultImage = UIImage(named: "cardback2.png")
+        defaultImage = UIImage(named: "cardback.png")
         
         for var x = 1; x<=5; x++ {
             let img = UIImage(named: "img\(x).png")
@@ -1278,15 +1614,6 @@ class GameController: UIViewController {
         }
         
     }
-    
-    func loadCardFlipAnimation() {
-        for var x = 0; x < 5; x++ {
-            playerCardOne.playFlipAnimation(cardFlipImageArray)
-            playerCardTwo.playFlipAnimation(cardFlipImageArray)
-            dealerCardOne.playFlipAnimation(cardFlipImageArray)
-            dealerCardTwo.playFlipAnimation(cardFlipImageArray)
-        }
-    }  //Played during loading screen to make animation less choppy the first couple times it runs
     
     func cardsInitialState() {
         playerCardOne.alpha = 0.0
@@ -1300,18 +1627,21 @@ class GameController: UIViewController {
     func cardOneToDeal() {
         playerCardOne.alpha = 1.0
         playerCardOne.slideFromRight(0.25, completionDelegate: nil)
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "playCardFlip", userInfo: nil, repeats: false)
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "flipCardOne", userInfo: nil, repeats: false)
     }
     
     func cardTwoToDeal() {
         dealerCardOne.alpha = 1.0
         dealerCardOne.slideFromRight(0.25, completionDelegate: nil)
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "playCardFlip", userInfo: nil, repeats: false)
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "flipCardTwo", userInfo: nil, repeats: false)
     }
     
     func cardThreeToDeal() {
         playerCardTwo.alpha = 1.0
         playerCardTwo.slideFromRight(0.25, completionDelegate: nil)
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "playCardFlip", userInfo: nil, repeats: false)
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "flipCardThree", userInfo: nil, repeats: false)
     }
     
@@ -1340,6 +1670,7 @@ class GameController: UIViewController {
     }
     
     func flipCardFour() {
+        playCardFlip()
         self.dealerCardTwo.image = UIImage(named: "\(dealerCards[1])")
         self.dealerCardTwo.playFlipAnimation(cardFlipImageArray)
     }
@@ -1350,6 +1681,7 @@ class GameController: UIViewController {
         cardToDeal.alpha = 1.0
         cardToDeal.slideFromRight(0.25, completionDelegate: nil)
         
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "playCardFlip", userInfo: nil, repeats: false)
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "flipAnyCard", userInfo: nil, repeats: false)
         
     }
@@ -1434,8 +1766,9 @@ class GameController: UIViewController {
         }
     }
     
+    
     func cardsLeaveScreen() {
-        for card in allCards {
+        for card in cardback {
             if card.hidden == false {
                 card.alpha = 1.0
                 card.slideFromRight(0.25, completionDelegate: nil)
