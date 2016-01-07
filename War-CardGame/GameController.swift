@@ -26,8 +26,12 @@ class GameController: UIViewController {
     //NSDate and Calendar Variables
     
     let userCalendar = NSCalendar.currentCalendar()
+    
     let todayComponents = NSDateComponents()
     var today: NSDate!
+    
+    var currentTimeComponents = NSDateComponents()
+    var currentTime: NSDate!
     
     //Bet Increment Timers
     
@@ -66,6 +70,7 @@ class GameController: UIViewController {
     
     var playerStand = false
     var playerDouble = false
+    var playerDidPressDouble = false
     var playerBust = false
     var roundIsOver = false
     var cardsOnScreen = false
@@ -249,8 +254,14 @@ class GameController: UIViewController {
 
         
         
-        //Initializer for sound effects. Sounds have not yet been implemented.
+        //Initializer for sound effects.
         
+        let bgMusicPlaying = AVAudioSession.sharedInstance()
+        
+        if bgMusicPlaying.otherAudioPlaying {
+            _ = try? bgMusicPlaying.setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+            _ = try? bgMusicPlaying.setActive(true, withOptions: [])
+        }
         
         do {
             try sfxCardShuffle = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("cardshuffling", ofType: "wav")!))
@@ -273,8 +284,17 @@ class GameController: UIViewController {
     
     //TESTING
     
+    /*override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //secondsLeft = staticTime - Int(floor(NSDate().timeIntervalSinceDate(today)))
 
+    }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }*/
     
     
     
@@ -377,6 +397,7 @@ class GameController: UIViewController {
         if playerBalance < currentBet {
             showGameMessage("You don't have enough money to double down!")
         } else {
+            playerDidPressDouble = true
             doubleButtonLabel.fadeIn()
             disableGameButtons()
             reShuffle()
@@ -655,6 +676,14 @@ class GameController: UIViewController {
     
     //Play Sounds
     func playCardFlip() {
+        let bgMusicPlaying = AVAudioSession.sharedInstance()
+        
+        if bgMusicPlaying.otherAudioPlaying {
+            _ = try? bgMusicPlaying.setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+            _ = try? bgMusicPlaying.setActive(true, withOptions: [])
+        }
+        
+        
         if sfxDeal.playing == true {
             sfxDealTwo.play()
         } else {
@@ -663,10 +692,24 @@ class GameController: UIViewController {
     }
     
     func playShuffle() {
+        let bgMusicPlaying = AVAudioSession.sharedInstance()
+        
+        if bgMusicPlaying.otherAudioPlaying {
+            _ = try? bgMusicPlaying.setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+            _ = try? bgMusicPlaying.setActive(true, withOptions: [])
+        }
+        
         sfxCardShuffle.play()
     }
     
     func soundToggle() {
+        let bgMusicPlaying = AVAudioSession.sharedInstance()
+        
+        if bgMusicPlaying.otherAudioPlaying {
+            _ = try? bgMusicPlaying.setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+            _ = try? bgMusicPlaying.setActive(true, withOptions: [])
+        }
+        
         if volumeOn == true {
             soundToggleLabel.setTitleColor(darkRed, forState: UIControlState.Normal)
             soundToggleLabel.setTitle("Sound: Off", forState: UIControlState.Normal)
@@ -682,6 +725,10 @@ class GameController: UIViewController {
             sfxDealTwo.volume = 0.3
             sfxDeal.volume = 0.3
         }
+    }
+    
+    func backgroundMusicPlaying() {
+        
     }
     
     
@@ -938,6 +985,13 @@ class GameController: UIViewController {
     }
     
     func doubleAction() {
+        hitButtonLabel.enabled = false
+        hitButtonLabel.alpha = 0.5
+        
+        doubleButtonLabel.enabled = false
+        doubleButtonLabel.alpha = 0.5
+        
+        
         playerBalance = playerBalance - currentBet
         currentBet = currentBet + currentBet
         betAmountLabel.text = "$\(currentBet)"
@@ -955,7 +1009,7 @@ class GameController: UIViewController {
         
         showNextCard()
         
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "playerDidDoubleDown", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "playerDidDoubleDown", userInfo: nil, repeats: false)
     }
     
     func buttonStateOnDeal() {
@@ -977,6 +1031,8 @@ class GameController: UIViewController {
     
     func playerDidDoubleDown() {
         playerDouble = true
+        hitButtonLabel.enabled = false
+        hitButtonLabel.alpha = 0.5
     }
     
     
@@ -1169,12 +1225,24 @@ class GameController: UIViewController {
                     hitButtonLabel.alpha = 0.5
                     bust()
                 } else {
-                    hitButtonLabel.enabled = true
-                    hitButtonLabel.alpha = 1.0
+                    if !playerDidPressDouble {
+                        hitButtonLabel.enabled = true
+                        hitButtonLabel.alpha = 1.0
+                    } else {
+                        showDealerScore()
+                        hitButtonLabel.enabled = false
+                        hitButtonLabel.alpha = 0.5
+                    }
                 }
             } else {
-                hitButtonLabel.enabled = true
-                hitButtonLabel.alpha = 1.0
+                if !playerDidPressDouble {
+                    hitButtonLabel.enabled = true
+                    hitButtonLabel.alpha = 1.0
+                } else {
+                    showDealerScore()
+                    hitButtonLabel.enabled = false
+                    hitButtonLabel.alpha = 0.5
+                }
             }
         }
     }
@@ -1184,6 +1252,7 @@ class GameController: UIViewController {
     
     func dealerPrepareToPlay() {
         //This function is initialized as a failsafe in case it is used when a player's turn is NOT over.
+        
         if playerTurnOver() {
             if !roundIsOver {
                 updateHandLabel()
@@ -1388,6 +1457,7 @@ class GameController: UIViewController {
             }
         }
         timerInProgress = true
+        saveData()
         moneyTimerLabel.text = convert(secondsLeft)
         moneyTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "moreMoneyTimer", userInfo: nil, repeats: true)
     }
@@ -1421,12 +1491,7 @@ class GameController: UIViewController {
         //NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "testTime2", userInfo: nil, repeats: true)
     }
     
-    func testTime2() {
-        let now = NSDate()
-        //print(floor(now.timeIntervalSinceDate(today)))
-        
-        print(staticTime - Int(floor(now.timeIntervalSinceDate(today))))
-        
+    func getCurrentTime() {
         
     }
     
