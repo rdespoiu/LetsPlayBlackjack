@@ -1441,6 +1441,9 @@ class GameController: UIViewController {
     
     func moneyTimerInit() {
         print("TIMER IN PROGRESS = \(timerInProgress)")
+        
+        getCurrentTime()
+        
         if secondsLeft != nil {
             if secondsLeft <= 0 {
                 testTime()
@@ -1448,9 +1451,11 @@ class GameController: UIViewController {
         }
         
         if !timerInProgress {
-            secondsLeft = staticTime - Int(floor(NSDate().timeIntervalSinceDate(today)))
+            //secondsLeft = staticTime - Int(floor(NSDate().timeIntervalSinceDate(today))) ORIGINAL STATEMENT
+            secondsLeft = staticTime - Int(floor(currentTime!.timeIntervalSinceDate(today)))
         } else {
-            secondsLeft = staticTime - Int(floor(NSDate().timeIntervalSinceDate(today)))
+            //secondsLeft = staticTime - Int(floor(NSDate().timeIntervalSinceDate(today))) ORIGINAL STATEMENT
+            secondsLeft = staticTime - Int(floor(currentTime!.timeIntervalSinceDate(today)))
             
             if secondsLeft <= 0 {
                 secondsLeft = 0
@@ -1460,10 +1465,14 @@ class GameController: UIViewController {
         saveData()
         moneyTimerLabel.text = convert(secondsLeft)
         moneyTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "moreMoneyTimer", userInfo: nil, repeats: true)
+        
+        //Test func
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "getCurrentTime", userInfo: nil, repeats: true)
     }
     
     func moreMoneyTimer() {
-        secondsLeft = secondsLeft - 1
+        //secondsLeft = secondsLeft - 1 ORIGINAL STATEMENT
+        secondsLeft = staticTime - Int(floor(currentTime!.timeIntervalSinceDate(today)))
         
         if secondsLeft <= 0 {
             secondsLeft = 0
@@ -1492,6 +1501,15 @@ class GameController: UIViewController {
     }
     
     func getCurrentTime() {
+        currentTimeComponents.year = NSCalendar.currentCalendar().component(NSCalendarUnit.Year, fromDate: NSDate())
+        currentTimeComponents.month = NSCalendar.currentCalendar().component(NSCalendarUnit.Month, fromDate: NSDate())
+        currentTimeComponents.day = NSCalendar.currentCalendar().component(NSCalendarUnit.Day, fromDate: NSDate())
+        currentTimeComponents.hour = NSCalendar.currentCalendar().component(NSCalendarUnit.Hour, fromDate: NSDate())
+        currentTimeComponents.minute = NSCalendar.currentCalendar().component(NSCalendarUnit.Minute, fromDate: NSDate())
+        currentTimeComponents.second = NSCalendar.currentCalendar().component(NSCalendarUnit.Second, fromDate: NSDate())
+        currentTime = userCalendar.dateFromComponents(currentTimeComponents)!
+        print("Current Time: \(currentTime)")
+        print(Int(floor(currentTime!.timeIntervalSinceDate(today))))
         
     }
     
